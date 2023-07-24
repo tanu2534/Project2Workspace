@@ -1,0 +1,22 @@
+ .header{
+    min-height: 60px;
+    width: calc(100% - 15dvw);
+    background-color: #292929;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 2;
+  }
+  .profile, .section{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: white;
+  }
+  .profile span, .profile p, .section span, .section p{
+    margin-left: 15px;
+    opacity: 0.6;
+  }

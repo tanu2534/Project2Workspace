@@ -1,0 +1,101 @@
+.side-bar{
+    height: 100dvh;
+    width: 15dvw;
+    background-color: #292929;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: fixed;
+    z-index: 1;
+  }
+
+  #com-name{
+    height: 60px;
+    width: 100%;
+    background-color: #1f1f1f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #com-name p{
+    color: white;
+    font-size: 1.3rem;
+    margin-left: 2px;
+  }
+  
+  .edit{
+    color: #04AA6D;
+  }
+
+  .fields .material-symbols-outlined{
+    padding-left: 10%;
+  }
+
+  .out{
+    width: 90%;
+    margin-left: 0;
+    opacity: 0.2;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .field-head{
+    color: white;
+    opacity: 0.4;
+    width: 100%;
+    margin-top: 7%;
+  }
+  .field-head p{
+  padding-left: 5%;
+  }
+  .field-head hr{
+  padding-left: 5%;
+  }
+  .fields{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+    opacity: 0.5;
+    width: 100%;
+  /*   padding-left: 20%; */
+  }
+  .fields:hover{
+  cursor: pointer;
+    background-color: #424242 ;
+    opacity: 0.9;
+  }
+  .fields p{
+   padding-left: 7%;
+    margin-bottom: 6%;
+    margin-top: 6%;
+    font-size: 0.9rem;
+  }
+  .boards{
+    margin-top: 10%;
+  }
+  .foot-ele {
+  padding-left: 0;
+  }
+  .foot-ele p{
+    margin-bottom: 0;
+    margin-top: 4%;
+    padding-left: 4%;
+    opacity: 0.5;
+  }
+  .foot-ele p:hover{
+    opacity: 1;
+    cursor: pointer;
+  }
+  .active{
+    background-color: #424242;
+    opacity: 0.9;
+  }
+  .active::before{
+    content: "";
+    height: 100%;
+    width: 3px;
+    background-color: #05faa0;
+    opacity: 2;
+  }

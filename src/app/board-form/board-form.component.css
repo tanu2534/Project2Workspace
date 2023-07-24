@@ -1,0 +1,42 @@
+.container {
+    padding: 16px;
+    color: white;
+    opacity: 0.7;
+  }
+  select{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: none;
+    background: #424242;
+    color: white;
+    opacity: 0.5;
+  }
+  button{
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: 0.9rem;
+  }
+  button:hover{
+    opacity: 1;
+  }
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+    opacity: 0.5;
+  }
+  #no-color{
+    border: 0.5px solid#f1f1f1;
+    background-color: transparent;
+    opacity: 0.5;
+  }
+  #no-color:hover{
+    opacity: 1;
+  }

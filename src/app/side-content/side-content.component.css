@@ -1,0 +1,9 @@
+.side-content{
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    width: calc(100dvw - 15dvw);
+    overflow-y: hidden;
+    margin-left:15dvw;
+    
+    }

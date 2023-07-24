@@ -1,0 +1,104 @@
+.above{
+    height: 70px;
+    width: 100%;
+    /* background-color: black; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-cont{
+    overflow-y: auto;
+}
+.above>h2{
+    margin-left: 20px;
+    opacity: 0.8;
+}
+.above>div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+ button{
+    height: 40px;
+    width: 150px;
+    background-color: #04AA6D;
+    color: white;
+    border-width: 0;
+    font-size: 1em;
+    margin-right: 25px;
+}
+
+.search{
+    height: 40px;
+    width: 300px;
+    box-sizing: border-box;
+    margin-right: 25px;
+    /* background-color: blueviolet; */
+}
+.show-area {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-evenly; */
+  /* width: 100%; */
+  align-content: flex-start;
+}
+
+/* Select the first and second flex items in each row */
+.show-area > *:nth-child(2n + 1),
+.show-area > *:nth-child(2n + 2) {
+  justify-self: flex-start;
+}
+.sqare-team-info{
+    margin-block: 20px;
+    height: 250px;
+    width: 350px;
+    background-color: #292929;
+    margin-left: 2%;
+}
+.sqare-team-info h3,h5{
+   margin-left: 15px;
+}
+
+.acts{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
+}
+
+
+
+.acts button{
+    height: 30px;
+    width: 140px;
+    margin-left: 15px;
+}
+#view-team{
+    background-color: transparent;
+    border:1px solid #04AA6D;
+    color: #04AA6D;
+}
+#view-team:hover{
+    background-color: #04AA6D;
+    border:1px solid #04AA6D;
+    color: white;
+}
+#dismiss-team{
+    background-color: transparent;
+    border:1px solid #e01d0f;
+    color: #e01d0f;
+}
+#dismiss-team:hover{
+    background-color:#e01d0f ;
+    border:1px solid #e01d0f;
+    color: white;
+}
+.h-line{
+    opacity: 0.3;
+    margin-top: 5px;
+}
+h5{
+    font-size: 0.9em;
+}

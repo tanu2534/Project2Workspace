@@ -1,0 +1,27 @@
+.search-comp{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #252525
+}
+.search-comp button{
+    height: 100%;
+    width: 20%;
+    background-color: #252525;
+    color: #ffffff;
+    border-width: 0;
+}
+input{
+    border-width: 0;
+    height: 80%;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.233);
+    color: white; 
+    /* background-color: pink; */
+}
+input::placeholder{
+    color: white;
+    padding-left: 6px;
+}

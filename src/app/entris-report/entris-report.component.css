@@ -1,0 +1,53 @@
+#report-entries{
+    height: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    /* background-color: blue; */
+    border-color: azure;
+    border: 1px solid rgb(94, 93, 93);
+    box-sizing: border-box;
+    margin: 2px;
+    padding: 15px;
+    opacity: 0.8;
+}
+.actions{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    /* height: auto; */
+}
+.details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.acts button{
+    margin-right: 40px;
+    padding: 5px;
+    border-color: transparent;
+    color: white;
+}
+#edit-proj{
+    background-color: #04AA6D;
+}
+#close-proj{
+    background-color: transparent;
+    border-color: red;
+    border-width: 1px;
+    color: red;
+}
+#archieved-proj{
+    background-color: transparent;
+    border-color: #04AA6D;
+    border-width: 1px;
+    color: #04AA6D;
+}
+.details p {
+    margin-left: 20px;
+    opacity: 0.5;
+}

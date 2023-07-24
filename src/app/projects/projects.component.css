@@ -1,0 +1,48 @@
+
+  .panal{
+    display: flex;
+  }
+  .panal-comp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 160px;
+    background-color: #292929;
+    margin-left: 50px;
+    margin-block: 20px;
+    /* opacity: 0.7; */
+  }
+ .panal-comp>h4{
+     margin-inline: 8px;
+     opacity: 0.7;
+     font-size: 0.85rem;
+  }
+  .opacity{
+    opacity: 0.2;
+  }
+  #entries{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    width: 75vw;
+    margin-left: 50px ;
+  }
+  .entri-header{
+    background-color: hsl(60, 56%, 91%, 0.3);
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .entries-box{
+    width: 50%;
+    display: grid;
+    place-items: center;
+  }
+  #entri-area{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }

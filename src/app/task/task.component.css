@@ -1,0 +1,42 @@
+.main-cont{
+    /* align-items: center; */
+    justify-content: center;
+}
+.main-cont>h3{
+   margin-left: 5%;
+}
+.panal{
+    height: 10vh;
+    width: 90%;
+    background-color: #292929;
+    margin-left: 5%;
+    margin-top: 2%;
+    display: grid;
+    place-items: center;
+}
+.h-line{
+    margin-left: 5%;
+    opacity: 0.3;
+}
+ul{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    width: 100%;
+    height: 100%;
+    list-style: none;
+}
+ul li{
+    margin-left: 12%;
+}
+ul li:nth-child(-n+2) {
+    background-color: #04AA6D;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 10rem;
+    margin-left: 0;
+    margin-right: 2%;
+}
