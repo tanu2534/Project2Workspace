@@ -20,6 +20,7 @@ import { TeamComponent } from './team/team.component';
 import { SearchComponent } from './search/search.component';
 import { DeadlinesComponent } from './deadlines/deadlines.component';
 import { TimedataComponent } from './timedata/timedata.component';
+import { CommunicationComponent } from './communication/communication.component';
 // import { TaskComponent } from './task/task.component';
 // import { UtilityModule } from './utility/utility.module';
 
@@ -44,6 +45,7 @@ import { TimedataComponent } from './timedata/timedata.component';
     SearchComponent,
     DeadlinesComponent,
     TimedataComponent,
+    CommunicationComponent,
   ],
   imports: [
     BrowserModule,

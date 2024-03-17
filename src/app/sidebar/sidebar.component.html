@@ -12,55 +12,55 @@
       <div class="h-line"></div>
     </div>
     
-    <div class="fields boards active">
+    <div class="fields boards active" (click)="nevigateTo('board')" [class.active]="activeFeild === 'board'">
          <span class="material-symbols-outlined">
          equalizer
          </span>
         <p>Boards</p>
     </div>
 
-    <div class="fields projects">
+    <div class="fields projects" (click)="nevigateTo('projects')" [class.active]="activeFeild === 'projects'">
          <span class="material-symbols-outlined">
          group_work
          </span>
         <p> Projects</p>
     </div>
     
-    <div class="fields tasks">
+    <div class="fields tasks" (click)="nevigateTo('task')" [class.active]="activeFeild === 'task'">
          <span class="material-symbols-outlined">
          task
          </span>
         <p> Tasks</p>
     </div>
     
-    <div class="fields team">
+    <div class="fields team" (click)="nevigateTo('team')" [class.active]="activeFeild === 'team'">
          <span class="material-symbols-outlined">
          group
          </span>
         <p>Team</p>
     </div>
     
-    <div class="fields time-tracking">
+    <div class="fields time-tracking" (click)="nevigateTo('deadline')" [class.active]="activeFeild === 'deadline'">
          <span class="material-symbols-outlined">
          pace
          </span>
         <p>Time Tracking</p>
     </div>
     
-    <div class="fields files">
-         <span class="material-symbols-outlined">
-         draft
-         </span>
-        <p>Files</p>
-    </div>
     
-    <div class="fields communication">
-         <span class="material-symbols-outlined">
-         forum
-         </span>
+    <div class="fields communication" (click)="nevigateTo('communication')" [class.active]="activeFeild === 'communication'">
+        <span class="material-symbols-outlined">
+            forum
+        </span>
         <p>Communication</p>
     </div>
     
+    <div class="fields files" (click)="nevigateTo('projects')" [class.active]="activeFeild === 'projects'">
+         <span class="material-symbols-outlined">
+         draft
+         </span>
+        <p>Log Out</p>
+    </div>
      <div class="h-line out"></div>
      <div class="fields careers foot-ele">
         <p>Careers</p>

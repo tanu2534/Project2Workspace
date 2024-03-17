@@ -9,6 +9,7 @@ import { EntriAnalyticsComponent } from './entri-analytics/entri-analytics.compo
 import { TaskComponent } from './task/task.component';
 import { TeamComponent } from './team/team.component';
 import { DeadlinesComponent } from './deadlines/deadlines.component';
+import { CommunicationComponent } from './communication/communication.component';
 
 const routes: Routes = [
  {
@@ -16,7 +17,7 @@ const routes: Routes = [
   component:WelcomeComponent
  },
  {
-  path:'admin/:id',
+  path:'source',
   component:MainpageComponent,
   children:[
     {
@@ -48,6 +49,10 @@ const routes: Routes = [
     {
       path:'deadline',
       component: DeadlinesComponent
+    },
+    {
+      path: 'communication',
+      component: CommunicationComponent
     }
   ]
  }
