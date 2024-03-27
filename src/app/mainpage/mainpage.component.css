@@ -1,5 +1,9 @@
 .main{
     display: flex;
+    background-image: url('C:\Users\ACER\vsfolder2\Angular\project\src\assets\tile_background (1).png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   /*   flex-direction: row; */
   /*   justify-content: center;
     align-items: center; */

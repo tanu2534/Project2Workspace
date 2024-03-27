@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +25,8 @@ import { SearchComponent } from './search/search.component';
 import { DeadlinesComponent } from './deadlines/deadlines.component';
 import { TimedataComponent } from './timedata/timedata.component';
 import { CommunicationComponent } from './communication/communication.component';
+import { MatTableModule } from '@angular/material/table';
+
 // import { TaskComponent } from './task/task.component';
 // import { UtilityModule } from './utility/utility.module';
 
@@ -50,6 +56,10 @@ import { CommunicationComponent } from './communication/communication.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatTableModule,
+    MatIconModule,
+    MatTabsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

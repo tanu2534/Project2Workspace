@@ -1,0 +1,25 @@
+.example-tab-icon {
+    margin-right: 8px;
+  }
+.beech{
+    background-color: rgba(0, 0, 0, 0.233);
+    padding-inline: 20px;
+    width: 90%;
+    overflow-x: hidden;
+    backdrop-filter: blur(1px);
+}  
+.place{
+    height: 500px;
+    width: 100%;
+}
+.main-cont{
+    /* padding-inline: 10px; */
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.hob{
+ background-color: aqua;
+}
