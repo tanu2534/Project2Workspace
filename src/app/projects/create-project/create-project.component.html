@@ -56,6 +56,26 @@
       <label for="tags" class="label">Tags</label>
       <input type="text" id="tags" formControlName="tags" class="input" placeholder="Enter tags">
     </div>
+    <div class="form-group tas">
+      <label class="label">Tasks</label>
+      <div formArrayName="tasks">
+        <div *ngFor="let task of tasksFormArray.controls; let i=index" [formGroupName]="i">
+          <div class="task-input-group">
+            <input type="text" formControlName="name" class="input" placeholder="Task name">
+            <input type="text" formControlName="description" class="input" placeholder="Task description">
+            <input type="date" formControlName="dueDate" class="input">
+            <select formControlName="status" class="input">
+              <option value="not-started">Not Started</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+            <input type="text" formControlName="assignees" class="input" placeholder="Assignees">
+            <button type="button" class="remove-btn" (click)="removeTask(i)">Remove</button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="add-btn" (click)="addTask()">Add Task</button>
+    </div>
     <div class="form-group">
       <label for="notes" class="label">Notes</label>
       <textarea id="notes" formControlName="notes" class="input textarea" placeholder="Additional notes" rows="3"></textarea>

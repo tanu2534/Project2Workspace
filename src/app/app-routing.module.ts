@@ -12,6 +12,7 @@ import { DeadlinesComponent } from './deadlines/deadlines.component';
 import { CommunicationComponent } from './communication/communication.component';
 import { SignupComponent } from './signup/signup.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
+import { CreateTaskComponent } from './task/create-task/create-task.component';
 
 const routes: Routes = [
  {
@@ -51,6 +52,10 @@ const routes: Routes = [
     {
       path: 'task',
       component: TaskComponent
+    },
+    {
+      path: 'task-create',
+      component: CreateTaskComponent
     },
     {
       path: 'team',

@@ -121,10 +121,10 @@
 
   }
   .tas {
-    border: 1px solid #ffffff70; /* Adjust width, style, and color as needed */
-    padding-block: 30px; 
+    /* border: 1px solid #ffffff70; Adjust width, style, and color as needed */
+    /* padding-block: 30px; 
     padding-inline: 10px;
-    width: 95%;
+    width: 95%; */
     /* opacity: 0.6; */
   }
   .tas .add-btn{
@@ -144,6 +144,9 @@
     padding-block: 5px;
     border-radius: 3px;
 
+  }
+  .tas .label{
+    margin-bottom: 0;
   }
 
   /* .main-cont{

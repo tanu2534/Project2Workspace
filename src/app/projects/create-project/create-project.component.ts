@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators , FormArray} from '@angular/forms';
 @Component({
   selector: 'app-create-project',
   templateUrl: './create-project.component.html',
@@ -19,9 +19,11 @@ export class CreateProjectComponent {
       projectOwner: ['', Validators.required],
       teamLead: ['', Validators.required],
       tags: [''],
-      notes: ['']
+      notes: [''], 
+      tasks: this.formBuilder.array([])
     });
   }
+
 
   ngOnInit() {
     // Additional initialization logic, if needed
@@ -32,6 +34,25 @@ export class CreateProjectComponent {
       // Handle form submission logic here
       console.log(this.createProjectForm.value);
     }
+  }
+
+  get tasksFormArray() {
+    return this.createProjectForm.get('tasks') as FormArray;
+  }
+
+  addTask() {
+    const taskGroup = this.formBuilder.group({
+      name: ['', Validators.required],
+      description: [''],
+      dueDate: [''],
+      status: ['not-started'],
+      assignees: ['']
+    });
+    this.tasksFormArray.push(taskGroup);
+  }
+
+  removeTask(index: number) {
+    this.tasksFormArray.removeAt(index);
   }
 
   onFileSelected(event: any) {

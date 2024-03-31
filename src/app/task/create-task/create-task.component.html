@@ -1,0 +1,33 @@
+<div class="main-cont">
+    <div class="create-project-container shadow">
+  <h2 class="heading">Create New Task</h2>
+  <div class="h-line"></div>
+    <div class="form-group tas">
+      <div formArrayName="tasks">
+        <div>
+          <div class="task-input-group">
+            <label for="taskName" class="label">Task Name</label>
+            <input type="text" formControlName="name" class="input" placeholder="Task name">
+            <label for="TasktDescription" class="label">Task Description</label>
+            <input type="text" formControlName="description" class="input" placeholder="Task description">
+            <label for="projectDescription" class="label">Start date</label>
+            <input type="date" formControlName="dueDate" class="input">
+            <label for="projectDescription" class="label">End date</label>
+            <input type="date" formControlName="dueDate" class="input">
+            <label for="status" class="label">Task Status</label>
+            <select formControlName="status" class="input">
+              <option value="not-started">Not Started</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+            <label for="assignees" class="label">Task Assignees</label>
+            <input type="text" formControlName="assignees" class="input" placeholder="Assignees">
+            <label for="assignees" class="label">Project</label>
+            <input type="text" formControlName="assignees" class="input" placeholder="Assignees">
+          </div>
+        </div>
+      </div>
+      <button type="button" class="add-btn" (click)="addTask()">Add Task</button>
+    </div>
+</div>
+</div>

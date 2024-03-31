@@ -31,6 +31,7 @@ import { MatTableModule } from '@angular/material/table';
 import { CalendarComponent } from './calendar/calendar.component';
 import { SignupComponent } from './signup/signup.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
+import { CreateTaskComponent } from './task/create-task/create-task.component';
 
 // import { TaskComponent } from './task/task.component';
 // import { UtilityModule } from './utility/utility.module';
@@ -60,6 +61,7 @@ import { CreateProjectComponent } from './projects/create-project/create-project
     CalendarComponent,
     SignupComponent,
     CreateProjectComponent,
+    CreateTaskComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class TaskComponent {
 
+  
+  constructor(private router : Router){
+    
+  }
+
+  openCreateTask(){
+    this.router.navigate([`/source/task-create`]);
+  }
 }
