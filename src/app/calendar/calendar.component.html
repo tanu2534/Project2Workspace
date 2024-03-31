@@ -1,0 +1,18 @@
+<div class="ma">
+    <div class="calendar shadow">
+        <div class="calendar-header">
+          <span class="month">{{ currentMonth | date:'MMMM yyyy' }}</span>
+        </div>
+        <div class="calendar-body">
+          <div class="calendar-week">
+            <div class="calendar-day day-header" *ngFor="let day of weekDays">{{ day }}</div>
+          </div>
+          <div class="calendar-week" *ngFor="let week of calendarDays">
+            <div class="calendar-day" *ngFor="let day of week" [ngClass]="{ 'today': day.today, 'other-month': !day.isSameMonth }">
+              {{ day.date.getDate() }}
+            </div>
+          </div>
+        </div>
+      </div>
+     <div class="extend shadow"></div> 
+</div>

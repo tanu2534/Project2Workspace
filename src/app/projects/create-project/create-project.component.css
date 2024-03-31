@@ -1,0 +1,121 @@
+.create-project-container {
+    background-color: #1a1a1ab7;
+    color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    width: 85%;
+    max-width: 973px;
+    /* margin: 0 auto; */
+    margin-inline: 3vw;
+    font-size: small;
+    /* display: flex;
+    flex-direction: column; */
+    /* justify-content: center;
+    align-items: center; */
+  }
+
+  .h-line{
+    margin-bottom: 30px;
+  }
+  
+  .heading {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+      display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+  
+    .label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+  
+    .input {
+      background-color: #2a2a2a;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      width: 95%;
+      transition: background-color 0.3s ease;
+      font-family: "Poppins", sans-serif;
+  
+      &:focus {
+        background-color: #3a3a3a;
+        outline: none;
+      }
+  
+      &.textarea {
+        resize: vertical;
+      }
+    }
+    .input::placeholder{
+        font-family: "Poppins", sans-serif;
+    }
+  
+    .priority-radio-group {
+      display: flex;
+      gap: 1rem;
+  
+      .priority-option {
+        display: flex;
+        align-items: center;
+  
+        input[type="radio"] {
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          width: 1.2rem;
+          height: 1.2rem;
+          border-radius: 50%;
+          border: 2px solid #ffffff;
+          outline: none;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+  
+          &:checked {
+            background-color: #ffffff;
+          }
+        }
+  
+        .priority-label {
+          margin-left: 0.5rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  
+  .submit-btn {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #2980b9;
+    }
+  
+    &:disabled {
+      background-color: #7f8c8d;
+      cursor: not-allowed;
+    }
+  }
+
+  /* .main-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */

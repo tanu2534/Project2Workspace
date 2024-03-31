@@ -1,5 +1,6 @@
 <div class="main-cont">
-  <app-task-table></app-task-table>
+  <app-task-table *ngIf="!iscal"></app-task-table>
+  <app-calendar *ngIf="iscal"></app-calendar>
   <h3>Task Analytics</h3>
   <div class="h-line"></div>
   <div class="panal shadow">

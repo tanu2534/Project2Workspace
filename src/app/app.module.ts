@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +28,9 @@ import { DeadlinesComponent } from './deadlines/deadlines.component';
 import { TimedataComponent } from './timedata/timedata.component';
 import { CommunicationComponent } from './communication/communication.component';
 import { MatTableModule } from '@angular/material/table';
+import { CalendarComponent } from './calendar/calendar.component';
+import { SignupComponent } from './signup/signup.component';
+import { CreateProjectComponent } from './projects/create-project/create-project.component';
 
 // import { TaskComponent } from './task/task.component';
 // import { UtilityModule } from './utility/utility.module';
@@ -52,6 +57,9 @@ import { MatTableModule } from '@angular/material/table';
     DeadlinesComponent,
     TimedataComponent,
     CommunicationComponent,
+    CalendarComponent,
+    SignupComponent,
+    CreateProjectComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +67,10 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     MatIconModule,
     MatTabsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule, 
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

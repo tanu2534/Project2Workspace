@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class ProjectsComponent {
 
+  isCreate : boolean = false;
+
+  constructor(private router : Router){
+    
+  }
+
+  openCreateProj(){
+    this.isCreate = true;
+    this.router.navigate([`/source/project-create`]);
+  }
 }

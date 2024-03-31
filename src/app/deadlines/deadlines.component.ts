@@ -16,7 +16,7 @@ export interface UserData {
 })
 export class DeadlinesComponent {
 
-  
+  iscal : boolean = true;
   displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
   dataSource = new MatTableDataSource<UserData>(ELEMENT_DATA);
 
