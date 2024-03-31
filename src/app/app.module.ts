@@ -32,6 +32,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { SignupComponent } from './signup/signup.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { CreateTaskComponent } from './task/create-task/create-task.component';
+import { CreateTeamComponent } from './team/create-team/create-team.component';
 
 // import { TaskComponent } from './task/task.component';
 // import { UtilityModule } from './utility/utility.module';
@@ -62,6 +63,7 @@ import { CreateTaskComponent } from './task/create-task/create-task.component';
     SignupComponent,
     CreateProjectComponent,
     CreateTaskComponent,
+    CreateTeamComponent,
   ],
   imports: [
     BrowserModule,

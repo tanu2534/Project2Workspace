@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-team',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class TeamComponent {
 
+  constructor(private router : Router){
+    
+  }
+  openCreateTeam(){
+    this.router.navigate([`/source/team-create`]);
+  }
 }

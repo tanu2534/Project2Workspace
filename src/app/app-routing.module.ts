@@ -13,6 +13,7 @@ import { CommunicationComponent } from './communication/communication.component'
 import { SignupComponent } from './signup/signup.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { CreateTaskComponent } from './task/create-task/create-task.component';
+import { CreateTeamComponent } from './team/create-team/create-team.component';
 
 const routes: Routes = [
  {
@@ -48,6 +49,10 @@ const routes: Routes = [
     {
       path: 'project-create',
       component: CreateProjectComponent
+    },
+    {
+      path: 'team-create',
+      component: CreateTeamComponent
     },
     {
       path: 'task',
