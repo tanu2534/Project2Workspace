@@ -1,20 +1,15 @@
 <div class="main-cont">
     <div class="panal">
 
+        <mat-radio-group class="min " aria-label="Select an option">
+            <mat-radio-button value="1">Ongoing Projects</mat-radio-button>
+            <mat-radio-button value="2">Closed Projects</mat-radio-button>
+        </mat-radio-group>
         <div class="panal-comp shadow" (click)="openCreateProj()">
             <span class="material-symbols-outlined">
                 add_circle
                 </span>
            <h4>Create Project</h4> 
-        </div>
-        <div class="panal-comp shadow">
-            <h4>Ongoing Projects</h4>
-        </div>
-        <div class="panal-comp shadow">
-            <h4>Closed Projects</h4>
-        </div>
-        <div class="panal-comp shadow">
-            <h4>Archieved Projects</h4>
         </div>
     </div>
     <div class="h-line opacity"></div>

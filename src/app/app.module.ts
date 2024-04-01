@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ import { SignupComponent } from './signup/signup.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { CreateTaskComponent } from './task/create-task/create-task.component';
 import { CreateTeamComponent } from './team/create-team/create-team.component';
+import { LoginComponent } from './login/login.component';
 
 // import { TaskComponent } from './task/task.component';
 // import { UtilityModule } from './utility/utility.module';
@@ -64,6 +66,7 @@ import { CreateTeamComponent } from './team/create-team/create-team.component';
     CreateProjectComponent,
     CreateTaskComponent,
     CreateTeamComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ import { CreateTeamComponent } from './team/create-team/create-team.component';
     BrowserAnimationsModule, 
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

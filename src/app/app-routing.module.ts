@@ -14,6 +14,7 @@ import { SignupComponent } from './signup/signup.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { CreateTaskComponent } from './task/create-task/create-task.component';
 import { CreateTeamComponent } from './team/create-team/create-team.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
  {
@@ -23,6 +24,10 @@ const routes: Routes = [
  {
   path: 'register',
   component: SignupComponent
+ },
+ {
+  path: 'login',
+  component: LoginComponent
  },
  {
   path:'source',
