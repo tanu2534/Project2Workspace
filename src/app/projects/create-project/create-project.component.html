@@ -22,7 +22,7 @@
     <div class="form-group">
       <label for="projectStatus" class="label">Project Status</label>
       <select id="projectStatus" formControlName="projectStatus" class="input">
-        <option value="not-started">Not Started</option>
+        <!-- <option value="not-started">Not Started</option> -->
         <option value="in-progress">In Progress</option>
         <option value="completed">Completed</option>
       </select>
@@ -56,7 +56,7 @@
       <label for="tags" class="label">Tags</label>
       <input type="text" id="tags" formControlName="tags" class="input" placeholder="Enter tags">
     </div>
-    <div class="form-group tas">
+    <!-- <div class="form-group tas">
       <label class="label">Tasks</label>
       <div formArrayName="tasks">
         <div *ngFor="let task of tasksFormArray.controls; let i=index" [formGroupName]="i">
@@ -75,7 +75,7 @@
         </div>
       </div>
       <button type="button" class="add-btn" (click)="addTask()">Add Task</button>
-    </div>
+    </div> -->
     <div class="form-group">
       <label for="notes" class="label">Notes</label>
       <textarea id="notes" formControlName="notes" class="input textarea" placeholder="Additional notes" rows="3"></textarea>

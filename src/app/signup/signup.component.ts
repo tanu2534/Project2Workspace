@@ -32,9 +32,10 @@ export class SignupComponent {
   onSubmit() {
     this.userService.register(this.user)
       .subscribe(
-        (response) => {
+        (response: any) => {
           console.log('Registration successful:', response);
           localStorage.setItem('userData', JSON.stringify(response));
+          localStorage.setItem('token',JSON.stringify(response.token))
           // Handle successful registration
         }
       );

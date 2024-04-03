@@ -21,4 +21,8 @@ export class UserService {
   login(credentials: any) {
     return this.http.post(`${this.apiUrl}/${this.service}/login`, credentials);
   }
+
+  getCompany(){
+    return localStorage.getItem('userData')
+  }
 }
