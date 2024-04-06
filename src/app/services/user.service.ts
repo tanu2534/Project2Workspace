@@ -21,8 +21,36 @@ export class UserService {
   login(credentials: any) {
     return this.http.post(`${this.apiUrl}/${this.service}/login`, credentials);
   }
+  
+  loadMembers(id:any){
+    return this.http.post(`${this.apiUrl}/${this.service}/users`, id);
+
+  }
+  
+  findOne(quary:any){
+    return this.http.post(`${this.apiUrl}/${this.service}/find`, quary);
+
+  }
 
   getCompany(){
-    return localStorage.getItem('userData')
+    const data =  localStorage.getItem('userData')?? '';
+    const res = JSON.parse(data)
+    return res.user.company;
+    // console.log(res.user)
+  }
+  getName(){
+    const data =  localStorage.getItem('userData')?? '';
+    const res = JSON.parse(data)
+    return res.user.name;
+  }
+  getEmail(){
+    const data =  localStorage.getItem('userData')?? '';
+    const res = JSON.parse(data)
+    return res.user.email;
+  }
+  getUserId(){
+    const data =  localStorage.getItem('userData')?? '';
+    const res = JSON.parse(data)
+    return res.user._id;
   }
 }

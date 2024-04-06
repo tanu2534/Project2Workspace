@@ -1,37 +1,77 @@
 <div class="main-cont">
-    <div class="container">
-        <h2>Sign Up</h2>
-        <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+
+  <div class="container shadow">
+    <h2>Sign Up</h2>
+  
+    <form [formGroup]="signupForm" >
+      <mat-horizontal-stepper class="stepper" #stepper linear disableHeaderNavigation>
+        <mat-step [formGroup]="personalInfoForm" [stepControl]="personalInfoForm">
+          <ng-template matStepLabel>Personal Information</ng-template>
           <div>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" [(ngModel)]="user.name" required>
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" [(ngModel)]="user.email" required>
-          </div>
-          <div>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
-          </div>
-          <div>
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" [(ngModel)]="user.company">
+            <mat-form-field>
+              <mat-label for="name">Name</mat-label>
+              <input matInput type="text" id="name" name="name" formControlName="name" required>
+            </mat-form-field>
           </div>
           <div>
-            <label for="role">Role</label>
-            <select id="role" name="role" [(ngModel)]="user.role" required>
-              <option value="">Select a role</option>
-              <option value="admin">Admin</option>
-              <option value="member">Member</option>
-              <option value="team-lead">Team Lead</option>
-            </select>
+            <mat-form-field>
+              <mat-label for="email">Email</mat-label>
+              <input matInput type="email" id="email" name="email" formControlName="email" required>
+            </mat-form-field>
           </div>
-          <div *ngIf="user.role === 'team-lead'">
-            <label for="teamName">Team Name</label>
-            <input type="text" id="teamName" name="teamName" [(ngModel)]="user.teamName">
+          <div>
+            <mat-form-field>
+              <mat-label for="company">Company</mat-label>
+              <input matInput type="text" id="company" name="company" formControlName="company" required>
+            </mat-form-field>
           </div>
-          <button type="submit" [disabled]="!signupForm.form.valid">Sign Up</button>
-        </form>
-      </div>
+          <div>
+            <button mat-button (click)="findCom()">Next</button>
+          </div>
+        </mat-step>
+  
+        <mat-step [formGroup]="accountInfoForm" [stepControl]="accountInfoForm">
+          <ng-template matStepLabel>Account Information</ng-template>
+          <div>
+            <mat-form-field>
+              <mat-label for="password">Password</mat-label>
+              <input matInput type="password" id="password" name="password" formControlName="password" required>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="sel">
+              <mat-label for="role">Role</mat-label><br/><br/><br/><br/><br/>
+              <mat-select id="role" name="role" formControlName="role" required>
+                <mat-option value="">Select a role</mat-option>
+                <mat-option value="admin">Admin</mat-option>
+                <mat-option value="member">Member</mat-option>
+                <mat-option value="team-lead">Team Lead</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!-- <div *ngIf="accountInfoForm.get('role')?.value === 'team-lead'">
+            <mat-form-field>
+              <mat-label for="teamName">Team Name</mat-label>
+              <input matInput type="text" id="teamName" name="teamName" formControlName="teamName" required>
+            </mat-form-field>
+          </div> -->
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="onSubmit()" >Sign Up</button>
+          </div>
+        </mat-step>
+  
+        <mat-step>
+          <ng-template matStepLabel>Confirmation</ng-template>
+          <div>
+            <p>Thank you for signing up!</p>
+            <p>You will be redirected to the signin page shortly.</p>
+          </div>
+          <div>
+            <!-- <button mat-button type="submit">Sign Up</button> -->
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </form>
+  </div>
 </div>

@@ -1,25 +1,36 @@
 <div class="main-cont">
-
-    <div class="create-team-container">
-        <h2 class="heading">Create New Team</h2>
-        <form [formGroup]="createTeamForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="teamName" class="label">Team Name</label>
-            <input type="text" id="teamName" formControlName="teamName" class="input" placeholder="Enter team name" required>
-          </div>
-          <div class="form-group">
-            <label for="teamDescription" class="label">Team Description</label>
-            <textarea id="teamDescription" formControlName="teamDescription" class="input textarea" placeholder="Describe the team" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="teamLead" class="label">Team Lead</label>
-            <input type="text" id="teamLead" formControlName="teamLead" class="input" placeholder="Enter team lead">
-          </div>
-          <div class="form-group">
-            <label for="teamMembers" class="label">Team Members</label>
-            <input type="text" id="teamMembers" formControlName="teamMembers" class="input" placeholder="Enter team members">
-          </div>
-          <button type="submit" class="submit-btn" [disabled]="!createTeamForm.valid">Create Team</button>
-        </form>
+  <div class="create-team-container">
+    <h2 class="heading">Create New Team</h2>
+    <form [formGroup]="createTeamForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="teamName" class="label">Team Name</label>
+        <input type="text" id="teamName" formControlName="teamName" class="input" placeholder="Enter team name" required>
       </div>
+      <div class="form-group">
+        <label for="teamDescription" class="label">Team Description</label>
+        <textarea id="teamDescription" formControlName="teamDescription" class="input textarea" placeholder="Describe the team" rows="3"></textarea>
+      </div>
+      <div class="form-group" *ngIf="members && members.length > 0">
+        <label for="teamLead" class="label">Team Lead</label>
+        <input type="text" id="teamLead" formControlName="teamLead" class="input" placeholder="Enter team lead" autocomplete="off">
+        <!-- Suggestions for team lead -->
+        <ul *ngIf="teamLeadSuggestions.length > 0">
+          <li *ngFor="let member of teamLeadSuggestions" (click)="selectTeamLead(member)">{{ member.name }}</li>
+        </ul>
+      </div>
+      <div class="form-group" *ngIf="members && members.length > 0">
+        <label for="teamMembers" class="label">Team Members</label>
+        <input type="text" id="teamMembers" formControlName="teamMembers" class="input" placeholder="Enter team members" autocomplete="off">
+        <!-- Auto-complete for team members -->
+        <ul *ngIf="memberSuggestions.length > 0">
+          <li *ngFor="let member of memberSuggestions" (click)="selectTeamMember(member)">{{ member.name }}</li>
+        </ul>
+        <!-- Display selected members as chips -->
+        <div class="selected-members">
+          <span *ngFor="let member of selectedMembers" class="chip">{{ member.name }}</span>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn" [disabled]="!createTeamForm.valid">Create Team</button>
+    </form>
+  </div>
 </div>

@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatStepperModule } from '@angular/material/stepper';
 // import { MatRadioModule } from '@angular/material/radio';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -95,7 +96,8 @@ import { LoginComponent } from './login/login.component';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
+    MatStepperModule
   ],
   providers: [  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent]
