@@ -60,3 +60,95 @@
     align-items: center;
     justify-content: center;
   }
+
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
+
+  ::ng-deep .mat-action-row {
+    background-color: #292929!important;
+  }
+  ::ng-deep .mat-expansion-panel-content{
+    background-color: #292929!important;
+  }
+  ::ng-deep .mat-expansion-panel-header.mat-expanded{
+    background-color: #292929!important;
+  }
+  ::ng-deep .mat-expansion-panel-header:not([aria-disabled=true]){
+    background-color: #292929!important;
+    color: white!important;
+     font-family: "Poppins", sans-serif !important;
+
+  }
+  ::ng-deep .mat-expansion-panel-header-title{
+    color: white!important;
+  }
+  ::ng-deep .mat-expansion-panel-header-description{
+    color: white!important;
+   
+  }
+  ::ng-deep .mat-action-row {
+    padding: 0px 7px 0px 24px !important;
+  }
+  ::ng-deep .mat-expansion-panel-body{
+    
+    padding-block: 10px !important;
+    padding-inline: 20px !important;
+    color: white;
+    font-family: poppins;
+  }
+  ::ng-deep .mdc-button .mdc-button__label{
+    position: relative;
+    color: white;
+    font-family: poppins;
+  }
+  
+.acts button{
+  height: 30px;
+  width: 140px;
+  margin-left: 15px;
+  font-family: "Poppins", sans-serif !important;
+}
+#view-proj{
+  background-color: transparent;
+  border:1px solid #04AA6D;
+  color: #04AA6D;
+}
+#view-proj:hover{
+  background-color: #04AA6D;
+  border:1px solid #04AA6D;
+  color: white;
+}
+#dismiss-proj{
+  background-color: transparent;
+  border:1px solid #e01d0f;
+  color: #e01d0f;
+}
+#dismiss-proj:hover{
+  background-color:#e01d0f ;
+  border:1px solid #e01d0f;
+  color: white;
+}
+
+::ng-deep .mat-mdc-radio-button .mdc-form-field {
+  color: rgb(255 255 255 / 87%) !important;
+  font-family: "Poppins", sans-serif !important;
+}
+::ng-deep .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:not(:checked)+.mdc-radio__background .mdc-radio__outer-circle {
+  border-color: rgb(255 255 255 / 54%)!important;
+}
+
+::ng-deep .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:checked+.mdc-radio__background .mdc-radio__outer-circle {
+  border-color: #04AA6D !important;
+}
+::ng-deep .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled+.mdc-radio__background .mdc-radio__inner-circle {
+  border-color: #04AA6D !important;
+}
+::ng-deep .mat-mdc-radio-button.mat-mdc-radio-checked .mdc-radio__background::before {
+  background-color:  #04aa6d83 !important;
+}

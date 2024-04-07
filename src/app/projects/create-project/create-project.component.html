@@ -4,42 +4,39 @@
   <div class="h-line"></div>
   <form [formGroup]="createProjectForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="projectName" class="label">Project Name</label>
-      <input type="text" id="projectName" formControlName="projectName" class="input" placeholder="Enter project name" required>
+      <label for="name" class="label">Project Name</label>
+      <input type="text" id="name" formControlName="name" class="input" placeholder="Enter project name" required>
     </div>
     <div class="form-group">
-      <label for="projectDescription" class="label">Project Description</label>
-      <textarea id="projectDescription" formControlName="projectDescription" class="input textarea" placeholder="Describe your project" rows="3"></textarea>
+      <label for="description" class="label">Project Description</label>
+      <textarea id="description" formControlName="description" class="input textarea" placeholder="Describe your project" rows="3"></textarea>
     </div>
     <div class="form-group">
       <label for="startDate" class="label">Start Date</label>
       <input type="date" id="startDate" formControlName="startDate" class="input">
     </div>
     <div class="form-group">
-      <label for="endDate" class="label">End Date</label>
-      <input type="date" id="endDate" formControlName="endDate" class="input">
-    </div>
-    <div class="form-group">
-      <label for="projectStatus" class="label">Project Status</label>
-      <select id="projectStatus" formControlName="projectStatus" class="input">
+      <label for="status" class="label">Project Status</label>
+      <select id="status" formControlName="status" class="input">
         <!-- <option value="not-started">Not Started</option> -->
         <option value="in-progress">In Progress</option>
         <option value="completed">Completed</option>
+        <option value="not-started">Not Started</option>
       </select>
     </div>
     <div class="form-group">
-      <label for="projectPriority" class="label">Project Priority</label>
+      <label for="priority" class="label">Project Priority</label>
       <div class="priority-radio-group">
         <div class="priority-option">
-          <input type="radio" id="priorityLow" formControlName="projectPriority" value="low">
+          <input type="radio" id="priorityLow" formControlName="priority" value="low">
           <label for="priorityLow" class="priority-label">Low</label>
         </div>
         <div class="priority-option">
-          <input type="radio" id="priorityMedium" formControlName="projectPriority" value="medium">
+          <input type="radio" id="priorityMedium" formControlName="priority" value="medium">
           <label for="priorityMedium" class="priority-label">Medium</label>
         </div>
         <div class="priority-option">
-          <input type="radio" id="priorityHigh" formControlName="projectPriority" value="high">
+          <input type="radio" id="priorityHigh" formControlName="priority" value="high">
           <label for="priorityHigh" class="priority-label">High</label>
         </div>
       </div>
@@ -48,13 +45,21 @@
       <label for="projectOwner" class="label">Project Owner</label>
       <input type="text" id="projectOwner" formControlName="projectOwner" class="input" placeholder="Enter project owner">
     </div> -->
-    <div class="form-group">
-      <label for="teamLead" class="label">Team Lead</label>
-      <input type="text" id="teamLead" formControlName="teamLead" class="input" placeholder="Enter team lead">
+    <div class="form-group" *ngIf="members && members.length > 0">
+      <label for="teamLeadId" class="label">Team Lead</label>
+      <input type="text" id="teamLeadId" formControlName="teamLeadId" class="input" placeholder="Enter team lead" (input)="filterTeamLead($event.target)" value="{{ createProjectForm.get('teamLeadName')?.value }}">
+
+      <!-- Suggestions for team lead -->
+      <div class="suggestions" *ngIf="filteredTeamLeadSuggestions? filteredTeamLeadSuggestions.length > 0 : false">
+        <div *ngFor="let member of filteredTeamLeadSuggestions" (click)="selectTeamLead(member); hideSuggestionsLead()">
+          {{ member.name }}
+        </div>
+      </div>
+      
     </div>
     <div class="form-group">
-      <label for="tags" class="label">Tags</label>
-      <input type="text" id="tags" formControlName="tags" class="input" placeholder="Enter tags">
+      <label for="tag" class="label">Tag</label>
+      <input type="text" id="tag" formControlName="tag" class="input" placeholder="Enter tag">
     </div>
     <!-- <div class="form-group tas">
       <label class="label">Tasks</label>
@@ -80,7 +85,7 @@
       <label for="notes" class="label">Notes</label>
       <textarea id="notes" formControlName="notes" class="input textarea" placeholder="Additional notes" rows="3"></textarea>
     </div>
-    <button type="submit" class="submit-btn" [disabled]="!createProjectForm.valid">Create Project</button>
+    <button type="button" class="submit-btn" (click)="onSubmit()" [disabled]="!createProjectForm.valid">Create Project</button>
   </form>
 </div>
 </div>

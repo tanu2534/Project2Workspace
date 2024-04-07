@@ -146,6 +146,21 @@
 
   }
 
+  .suggestions{
+    width: 300px;
+    background-color: #74747452;
+    border-radius: 7px;
+    padding-inline: 10px;
+    padding-block: 10px;
+  }
+  .suggestions div {
+    background-color: #00000029;
+    padding-inline: 10px;
+    padding-block: 10px;
+    border-radius: 5px;
+    margin-block-end: 1px;
+  }
+
   /* .main-cont{
     display: flex;
     align-items: center;

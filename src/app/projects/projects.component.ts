@@ -18,4 +18,18 @@ export class ProjectsComponent {
     this.isCreate = true;
     this.router.navigate([`/source/project-create`]);
   }
+
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
 }

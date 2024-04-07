@@ -3,34 +3,44 @@
     <h2 class="heading">Create New Team</h2>
     <form [formGroup]="createTeamForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="teamName" class="label">Team Name</label>
-        <input type="text" id="teamName" formControlName="teamName" class="input" placeholder="Enter team name" required>
+        <label for="name" class="label">Team Name</label>
+        <input type="text" id="name" formControlName="name" class="input" placeholder="Enter team name" required>
       </div>
       <div class="form-group">
-        <label for="teamDescription" class="label">Team Description</label>
-        <textarea id="teamDescription" formControlName="teamDescription" class="input textarea" placeholder="Describe the team" rows="3"></textarea>
+        <label for="department" class="label">Department</label>
+        <input type="text" id="department" formControlName="department" class="input" placeholder="Enter department" required>
+      </div>
+      <div class="form-group">
+        <label for="description" class="label">Team Description</label>
+        <textarea id="description" formControlName="description" class="input textarea" placeholder="Describe the team" rows="3"></textarea>
       </div>
       <div class="form-group" *ngIf="members && members.length > 0">
-        <label for="teamLead" class="label">Team Lead</label>
-        <input type="text" id="teamLead" formControlName="teamLead" class="input" placeholder="Enter team lead" autocomplete="off">
+        <label for="teamLeadId" class="label">Team Lead</label>
+        <input type="text" id="teamLeadId" formControlName="teamLeadId" class="input" placeholder="Enter team lead" (input)="filterTeamLead($event.target)" value="{{ createTeamForm.get('teamLeadName')?.value }}">
+
         <!-- Suggestions for team lead -->
-        <ul *ngIf="teamLeadSuggestions.length > 0">
-          <li *ngFor="let member of teamLeadSuggestions" (click)="selectTeamLead(member)">{{ member.name }}</li>
-        </ul>
+        <div class="suggestions" *ngIf="filteredTeamLeadSuggestions? filteredTeamLeadSuggestions.length > 0 : false">
+          <div *ngFor="let member of filteredTeamLeadSuggestions" (click)="selectTeamLead(member); hideSuggestionsLead()">
+            {{ member.name }}
+          </div>
+        </div>
+        
       </div>
       <div class="form-group" *ngIf="members && members.length > 0">
-        <label for="teamMembers" class="label">Team Members</label>
-        <input type="text" id="teamMembers" formControlName="teamMembers" class="input" placeholder="Enter team members" autocomplete="off">
+        <label for="members" class="label">Team Members</label>
+        <input type="text" id="members" formControlName="members" class="input" placeholder="Enter team members" (input)="filterTeamMember($event.target)" value="{{ ' '}}" >
         <!-- Auto-complete for team members -->
-        <ul *ngIf="memberSuggestions.length > 0">
-          <li *ngFor="let member of memberSuggestions" (click)="selectTeamMember(member)">{{ member.name }}</li>
-        </ul>
+        <div class="suggestions" *ngIf="filteredTeammemberSuggestions? filteredTeammemberSuggestions.length > 0 : false">
+          <div *ngFor="let member of filteredTeammemberSuggestions" (click)="selectTeamMember(member) ; hideSuggestionsMem()">
+            {{ member.name }}
+          </div>
+        </div>
         <!-- Display selected members as chips -->
         <div class="selected-members">
           <span *ngFor="let member of selectedMembers" class="chip">{{ member.name }}</span>
         </div>
       </div>
-      <button type="submit" class="submit-btn" [disabled]="!createTeamForm.valid">Create Team</button>
+      <button type="button" class="submit-btn" [disabled]="!createTeamForm.valid" (click)="onSubmit()">Create Team</button>
     </form>
   </div>
 </div>

@@ -21,10 +21,11 @@
           </div>
           <div>
             <mat-form-field>
-              <mat-label for="company">Company</mat-label>
-              <input matInput type="text" id="company" name="company" formControlName="company" required>
+              <mat-label for="password">Password</mat-label>
+              <input matInput type="password" id="password" name="password" formControlName="password" required>
             </mat-form-field>
           </div>
+
           <div>
             <button mat-button (click)="findCom()">Next</button>
           </div>
@@ -32,12 +33,7 @@
   
         <mat-step [formGroup]="accountInfoForm" [stepControl]="accountInfoForm">
           <ng-template matStepLabel>Account Information</ng-template>
-          <div>
-            <mat-form-field>
-              <mat-label for="password">Password</mat-label>
-              <input matInput type="password" id="password" name="password" formControlName="password" required>
-            </mat-form-field>
-          </div>
+
           <div>
             <mat-form-field class="sel">
               <mat-label for="role">Role</mat-label><br/><br/><br/><br/><br/>
@@ -47,6 +43,13 @@
                 <mat-option value="member">Member</mat-option>
                 <mat-option value="team-lead">Team Lead</mat-option>
               </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <mat-label for="company">Company</mat-label>
+              <input matInput type="text" id="company" name="company" formControlName="company" required>
             </mat-form-field>
           </div>
           <!-- <div *ngIf="accountInfoForm.get('role')?.value === 'team-lead'">

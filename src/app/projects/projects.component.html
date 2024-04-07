@@ -20,7 +20,35 @@
             <div class="entries-box"><p>View Project Analytics</p></div>
         </div>
         <div id="entri-area">
-        <router-outlet></router-outlet>
+            <mat-accordion class="example-headers-align">
+                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                     Project Name: 
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Assign to 
+                      <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon> -->
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  
+
+                      <div> Description: </div>
+    
+
+            
+                  <mat-action-row>
+                    <div class="acts">
+                        <button id="view-proj">View Project</button>
+                        <button id="dismiss-proj">Dismiss Project</button>
+                    </div>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+
+              
+              </mat-accordion>
+              
         </div>
     </div>
 </div>
