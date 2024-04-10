@@ -6,24 +6,59 @@
       <div formArrayName="tasks">
         <div>
           <div class="task-input-group">
-            <label for="taskName" class="label">Task Name</label>
+            <label for="name" class="label">Task Name</label>
             <input type="text" formControlName="name" class="input" placeholder="Task name">
-            <label for="TasktDescription" class="label">Task Description</label>
+
+            <label for="projectName" class="label">Project Name</label>
+            <input type="text" formControlName="projectName" class="input" placeholder="Project Name">
+
+            <div class="form-group" *ngIf="members && members.length > 0">
+              <label for="assignees" class="label">Team Members</label>
+              <input type="text" id="members" formControlName="assignees" class="input" placeholder="Enter team members" (input)="filterTeamMember($event.target)" value="{{ ' '}}" >
+              <!-- Auto-complete for team members -->
+              <div class="suggestions" *ngIf="filteredTeammemberSuggestions? filteredTeammemberSuggestions.length > 0 : false">
+                <div *ngFor="let member of filteredTeammemberSuggestions" (click)="selectTeamMember(member) ; hideSuggestionsMem()">
+                  {{ member.name }}
+                </div>
+              </div>
+              <!-- Display selected members as chips -->
+              <div class="selected-members">
+                <span *ngFor="let member of selectedMembers" class="chip">{{ member.name }}</span>
+              </div>
+            </div>
+
+            <label for="description" class="label">Task Description</label>
             <input type="text" formControlName="description" class="input" placeholder="Task description">
-            <label for="projectDescription" class="label">Start date</label>
-            <input type="date" formControlName="dueDate" class="input">
-            <label for="projectDescription" class="label">End date</label>
-            <input type="date" formControlName="dueDate" class="input">
+
+            <div class="form-group">
+              <label for="priority" class="label">Priority</label>
+              <div class="priority-radio-group">
+                <div class="priority-option">
+                  <input type="radio" id="priorityLow" formControlName="priority" value="low">
+                  <label for="priorityLow" class="priority-label">Low</label>
+                </div>
+                <div class="priority-option">
+                  <input type="radio" id="priorityMedium" formControlName="priority" value="medium">
+                  <label for="priorityMedium" class="priority-label">Medium</label>
+                </div>
+                <div class="priority-option">
+                  <input type="radio" id="priorityHigh" formControlName="priority" value="high">
+                  <label for="priorityHigh" class="priority-label">High</label>
+                </div>
+              </div>
+            </div>
+
+
+            <label for="deadline" class="label">Deadline</label>
+            <input type="date" formControlName="deadline" class="input">
+
             <label for="status" class="label">Task Status</label>
             <select formControlName="status" class="input">
               <option value="not-started">Not Started</option>
               <option value="in-progress">In Progress</option>
               <option value="completed">Completed</option>
             </select>
-            <label for="assignees" class="label">Task Assignees</label>
-            <input type="text" formControlName="assignees" class="input" placeholder="Assignees">
-            <label for="assignees" class="label">Project</label>
-            <input type="text" formControlName="assignees" class="input" placeholder="Assignees">
+
           </div>
         </div>
       </div>

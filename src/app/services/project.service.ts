@@ -15,5 +15,8 @@ export class ProjectService {
     return this.http.post(`${this.apiUrl}/${this.service}`, data);
   }
 
+  getAllProjects(data:any){
+    return this.http.post(`${this.apiUrl}/${this.service}/find`, data);
+  }
 
 }

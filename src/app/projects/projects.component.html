@@ -1,10 +1,12 @@
 <div class="main-cont">
     <div class="panal">
 
-        <mat-radio-group class="min " aria-label="Select an option">
-            <mat-radio-button value="1">Ongoing Projects</mat-radio-button>
-            <mat-radio-button value="2">Closed Projects</mat-radio-button>
-        </mat-radio-group>
+      <mat-radio-group class="min" [(ngModel)]="selectedOption" (change)="onOptionChange()" aria-label="Select an option">
+        <mat-radio-button value="in-progress">Ongoing Projects</mat-radio-button>
+        <mat-radio-button value="completed">Closed Projects</mat-radio-button>
+        <mat-radio-button value="not-started">Projects not started</mat-radio-button>
+    </mat-radio-group>
+    
         <div class="panal-comp shadow" (click)="openCreateProj()">
             <span class="material-symbols-outlined">
                 add_circle
@@ -20,34 +22,29 @@
             <div class="entries-box"><p>View Project Analytics</p></div>
         </div>
         <div id="entri-area">
-            <mat-accordion class="example-headers-align">
-                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                     Project Name: 
-                    </mat-panel-title>
-                    <mat-panel-description>
-                      Assign to 
-                      <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon> -->
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  
-
-                      <div> Description: </div>
-    
-
-            
-                  <mat-action-row>
-                    <div class="acts">
-                        <button id="view-proj">View Project</button>
-                        <button id="dismiss-proj">Dismiss Project</button>
-                    </div>
-                    <button mat-button color="primary" (click)="nextStep()">Next</button>
-                  </mat-action-row>
-                </mat-expansion-panel>
-
+          <mat-accordion class="example-headers-align">
+            <mat-expansion-panel *ngFor="let panel of projects; let i = index" [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Project Name: {{ panel.name }}
+                </mat-panel-title>
+                <mat-panel-description>
+                  Assign to: {{ panel.teamLeadName }}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
               
-              </mat-accordion>
+              <div>Description: {{ panel.description }}</div>
+          
+              <mat-action-row>
+                <div class="acts">
+                  <button id="view-proj">View Project</button>
+                  <button id="dismiss-proj">Dismiss Project</button>
+                </div>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+          
               
         </div>
     </div>

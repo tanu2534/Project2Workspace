@@ -107,21 +107,28 @@ export class CreateProjectComponent {
   filterTeamLead(target: any) {
     // Filter members based on input value
     if (target.value) {
+      // Get the IDs of team leads who already have projects assigned to them
+      const assignedTeamLeadIds = this.members.map((project: any) => project.project);
+  
       // Filter out team members from the suggestions
-      console.log("members",this.members)
       this.filteredTeamLeadSuggestions = this.members
         .filter((member: any) =>
           member.name.toLowerCase().includes(target.value.toLowerCase()) &&
           member.role === 'team-lead' &&
-          !this.selectedMembers?.some((selected :any)=> selected._id === member._id) // Check if the member is not already in the team
+          !member.project &&
+          !this.selectedMembers?.some((selected: any) => selected._id === member._id) && // Exclude already selected members
+          !assignedTeamLeadIds?.includes(member._id) // Exclude team leads with already assigned projects
         )
         .slice(0, 3); // Limit the suggestions to the first three
-      // Assign filtered suggestions to this.lead
-      console.log("filtered",this.filteredTeamLeadSuggestions)
+  
+      // Assign filtered suggestions to this.filteredTeamLeadSuggestions
+      console.log("filtered", this.filteredTeamLeadSuggestions);
     } else {
       this.filteredTeamLeadSuggestions = [];
-      // Clear this.lead if no input value
+      // Clear this.filteredTeamLeadSuggestions if no input value
     }
   }
+  
+  
 
 }

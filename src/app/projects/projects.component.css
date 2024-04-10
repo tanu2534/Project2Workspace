@@ -152,3 +152,7 @@
 ::ng-deep .mat-mdc-radio-button.mat-mdc-radio-checked .mdc-radio__background::before {
   background-color:  #04aa6d83 !important;
 }
+span{
+  margin: 0%;
+  padding: 0%;
+}

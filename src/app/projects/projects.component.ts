@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProjectService } from '../services/project.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-projects',
@@ -9,9 +11,21 @@ import { Router } from '@angular/router';
 export class ProjectsComponent {
 
   isCreate : boolean = false;
+  company: any;
+  projects: any;
+  selectedOption: string = 'in-progress'; 
 
-  constructor(private router : Router){
+  constructor(private router : Router,
+    private projectService: ProjectService,
+    private userService: UserService
+  ){
     
+  }
+
+  ngOnInit(): void {
+
+    this.company =  this.userService.getCompany();
+    this.loadProjects({companyId: this.company, status: this.selectedOption});
   }
 
   openCreateProj(){
@@ -32,4 +46,23 @@ export class ProjectsComponent {
   prevStep() {
     this.step--;
   }
+
+  loadProjects(project: any) {
+    this.projectService.getAllProjects(project).subscribe(
+      (response: any) => {
+        this.projects = response;
+        console.log("projects ",response)
+      }
+    )
+  }
+
+  onOptionChange() {
+    // Call your function here
+    console.log('Selected option:', this.selectedOption);
+
+    this.loadProjects({companyId: this.company, status: this.selectedOption});
+    // Call your functional method based on the selected option
+    // For example: this.myFunction(this.selectedOption);
+  }
+  
 }

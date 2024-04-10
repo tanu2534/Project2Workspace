@@ -149,6 +149,36 @@
     margin-bottom: 0;
   }
 
+
+  .suggestions{
+    width: 300px;
+    background-color: #74747452;
+    border-radius: 7px;
+    padding-inline: 10px;
+    padding-block: 10px;
+  }
+  .suggestions div {
+    background-color: #00000029;
+    padding-inline: 10px;
+    padding-block: 10px;
+    border-radius: 5px;
+    margin-block-end: 1px;
+  }
+
+  .selected-members span {
+      border-radius: 5px;
+      background-color: rgb(53, 94, 128);
+      padding-block: 5px;
+      padding-inline: 5px;
+      margin-right: 8px;
+      /* margin-block-start: 45px; */
+ 
+  }
+
+  .selected-members{
+    margin-top: 2em !important;
+  }
+
   /* .main-cont{
     display: flex;
     align-items: center;
