@@ -3,18 +3,24 @@
   <h2 class="heading">Create New Task</h2>
   <div class="h-line"></div>
     <div class="form-group tas">
-      <div formArrayName="tasks">
+      <form [formGroup]="createTaskForm" (ngSubmit)="onSubmit()">
         <div>
           <div class="task-input-group">
             <label for="name" class="label">Task Name</label>
             <input type="text" formControlName="name" class="input" placeholder="Task name">
 
             <label for="projectName" class="label">Project Name</label>
-            <input type="text" formControlName="projectName" class="input" placeholder="Project Name">
+            <input type="text" formControlName="projectName" class="input" placeholder="Project Name"  (input)="filterProjects($event.target)"  value="{{ createTaskForm.get('projectName')?.value }}">
+
+            <div class="suggestions" *ngIf="filteredProjectsSuggestions? filteredProjectsSuggestions.length > 0 : false">
+              <div *ngFor="let member of filteredProjectsSuggestions" (click)="selectProjects(member) ; hideSuggestionsPro()">
+                {{ member.name }}
+              </div>
+            </div>
 
             <div class="form-group" *ngIf="members && members.length > 0">
               <label for="assignees" class="label">Team Members</label>
-              <input type="text" id="members" formControlName="assignees" class="input" placeholder="Enter team members" (input)="filterTeamMember($event.target)" value="{{ ' '}}" >
+              <input type="text" id="members" formControlName="assignees" class="input" placeholder="Enter team members" (input)="filterTeamMember($event.target)"  value="{{ createTaskForm.get('assigneesName')?.value }}">
               <!-- Auto-complete for team members -->
               <div class="suggestions" *ngIf="filteredTeammemberSuggestions? filteredTeammemberSuggestions.length > 0 : false">
                 <div *ngFor="let member of filteredTeammemberSuggestions" (click)="selectTeamMember(member) ; hideSuggestionsMem()">
@@ -50,19 +56,22 @@
 
 
             <label for="deadline" class="label">Deadline</label>
-            <input type="date" formControlName="deadline" class="input">
+            <input type="date" formControlName="deadline" class="input" [min]="minDate">
+            <!-- <div id="marg" *ngIf="createTaskForm.get('deadline')?.hasError('noFutureDate')">
+             Bhai past ki date kyu bhar raha h, dimag kharab h kya?
+            </div> -->
 
-            <label for="status" class="label">Task Status</label>
+            <!-- <label for="status" class="label">Task Status</label>
             <select formControlName="status" class="input">
               <option value="not-started">Not Started</option>
               <option value="in-progress">In Progress</option>
               <option value="completed">Completed</option>
-            </select>
+            </select> -->
 
           </div>
         </div>
-      </div>
-      <button type="button" class="add-btn" (click)="addTask()">Add Task</button>
+      </form>
+      <button type="button" class="submit-btn" (click)="onSubmit()" [disabled]="!createTaskForm.valid">Create Task</button>
     </div>
 </div>
 </div>

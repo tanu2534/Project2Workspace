@@ -8,11 +8,27 @@
             <div class="calendar-day day-header" *ngFor="let day of weekDays">{{ day }}</div>
           </div>
           <div class="calendar-week" *ngFor="let week of calendarDays">
-            <div class="calendar-day" *ngFor="let day of week" [ngClass]="{ 'today': day.today, 'other-month': !day.isSameMonth }">
+            <div class="calendar-day" *ngFor="let day of week" [ngClass]="{
+              'today': day.today,
+              'other-month': !day.isSameMonth,
+              'clicked': day.clicked
+            }" (click)="handleDayClick(day)">
               {{ day.date.getDate() }}
             </div>
           </div>
         </div>
       </div>
-     <div class="extend shadow"></div> 
+     <div class="extend shadow">
+      <div *ngIf="!isTask">
+            <p>No deadlines found !</p>
+      </div>
+      <div
+        *ngIf="isTask">
+      <h4>
+        Task/s are : 
+      </h4>
+      <div *ngFor="let task of collected">
+        <p>{{task.name}} - {{task.assigneesName}}</p><br>
+      </div>
+     </div> 
 </div>

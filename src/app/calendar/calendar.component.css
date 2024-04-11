@@ -82,5 +82,11 @@
     background-color: #292929;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .calendar-day.clicked {
+    background-color: #4779b2; /* or any other color you want */
   }

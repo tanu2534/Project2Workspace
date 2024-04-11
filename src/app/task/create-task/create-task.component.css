@@ -179,6 +179,10 @@
     margin-top: 2em !important;
   }
 
+  #marg{
+    margin-block: 30px;
+  }
+
   /* .main-cont{
     display: flex;
     align-items: center;

@@ -1,19 +1,13 @@
 <div class="main-cont">
   <app-task-table *ngIf="!iscal"></app-task-table>
   <app-calendar *ngIf="iscal"></app-calendar>
-  <h3>Task Analytics</h3>
+  <h3>Deadline Analytics</h3>
   <div class="h-line"></div>
   <div class="panal shadow">
       <ul>
-          <li class="shadow">
-              <span class="material-symbols-outlined">
-                  add_circle
-                  </span>
-              Add new task</li>
           <li class="shadow">View Graph</li>
-          <li>Total Tasks: </li>
-          <li>Running: </li>
-          <li>Closed: </li>
+          <li>Total deadlines today : {{runningTasksCount?? 0}}</li>
+          <li>Completed deadlines today : {{completedTasksCount?? 0}}</li>
       </ul>
   </div>
 </div>

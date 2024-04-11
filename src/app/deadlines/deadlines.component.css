@@ -29,7 +29,7 @@ ul{
 ul li{
     margin-left: 12%;
 }
-ul li:nth-child(-n+2) {
+ul li:nth-child(-n+1) {
     background-color: #04AA6D;
     color: white;
     display: flex;

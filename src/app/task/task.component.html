@@ -1,5 +1,23 @@
 <div class="main-cont">
-    <app-task-table></app-task-table>
+    <div class="table shadow">
+        <table>
+            <tr>
+                <th>Task Name</th>
+                <th>Project</th>
+                <th>Priority</th>
+                <th>Assignee</th>
+                <th>Status</th>
+
+              </tr>
+              <tr *ngFor="let i of tasks">
+                <td>{{i.name}}</td>
+                <td>{{i.projectName}}</td>
+                <td>{{i.priority}}</td>
+                <td>{{i.assigneesName}}</td>
+                <td>{{i.status}}</td>
+              </tr>
+        </table>
+    </div>
     <h3>Task Analytics</h3>
     <div class="h-line"></div>
     <div class="panal shadow">
@@ -10,9 +28,9 @@
                     </span>
                 Add new task</li>
             <li class="shadow">View Graph</li>
-            <li>Total Tasks: </li>
-            <li>Running: </li>
-            <li>Closed: </li>
+            <li>Total Tasks : {{tasks?.length}}</li>
+            <li>Running : {{runningTasksCount}} </li>
+            <li>Closed : {{completedTasksCount}} </li>
         </ul>
     </div>
 </div>
