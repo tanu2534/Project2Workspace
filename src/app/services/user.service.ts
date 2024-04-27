@@ -53,4 +53,8 @@ export class UserService {
     const res = JSON.parse(data)
     return res.user._id;
   }
+
+  getAllUsers(data:any){
+    return this.http.post(`${this.apiUrl}/${this.service}/all-users`, data)
+  }
 }
