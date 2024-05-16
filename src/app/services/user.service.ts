@@ -32,6 +32,8 @@ export class UserService {
 
   }
 
+ 
+
   getCompany(){
     const data =  localStorage.getItem('userData')?? '';
     const res = JSON.parse(data)

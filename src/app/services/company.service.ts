@@ -18,4 +18,7 @@ export class CompanyService {
   findOne(company: any) {
     return this.http.post(`${this.apiUrl}/${this.service}/find`, company);
   }
+  getCompanyById(id:any){
+    return this.http.get(`${this.apiUrl}/${this.service}/${id}`);
+  }
 }

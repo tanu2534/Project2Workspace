@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { CompanyService } from '../services/company.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent {
   activeFeild: string = '';
-  constructor(private router : Router){
+  com: any;
+  constructor(private router : Router, private userService: UserService, private companyService : CompanyService) {
     
   }
   
@@ -17,7 +20,19 @@ export class SidebarComponent {
     const url =  (this.router.url).split('/')
     console.log(url[2]) ;
     this.activeFeild = 'board';
+    let com = this.userService.getCompany();
+    console.log("from side ",this.com)
+    this.getcom(com);
 
+  }
+
+  getcom(com:any){
+    this.companyService.getCompanyById(com).subscribe(
+      (res: any)=>{
+        console.log("asdsd",res);
+        this.com = res?.name;
+      }
+    )
   }
   nevigateTo(way: string) {
   // throw new Error('Method not implemented.');
