@@ -19,4 +19,7 @@ export class ProjectService {
     return this.http.post(`${this.apiUrl}/${this.service}/find`, data);
   }
 
+  getProjectById(id:any){
+    return this.http.get(`${this.apiUrl}/${this.service}/${id}`);
+  }
 }

@@ -59,4 +59,8 @@ export class UserService {
   getAllUsers(data:any){
     return this.http.post(`${this.apiUrl}/${this.service}/all-users`, data)
   }
+
+  getUserById(id:any){
+    return this.http.get(`${this.apiUrl}/${this.service}/${id}`)
+  }
 }

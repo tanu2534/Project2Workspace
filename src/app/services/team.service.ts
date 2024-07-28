@@ -19,4 +19,8 @@ export class TeamService {
   findAllByQuary(quary:any){
     return this.http.post(`${this.apiUrl}/${this.service}/find`, quary);
   }
+
+  getTeamById(id:any){
+    return this.http.get(`${this.apiUrl}/${this.service}/${id}`);
+  }
 }

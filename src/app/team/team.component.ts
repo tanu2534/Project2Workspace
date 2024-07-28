@@ -29,4 +29,8 @@ export class TeamComponent  {
   openCreateTeam(){
     this.router.navigate([`/source/team-create`]);
   }
+  gotoViewTeam(team: any) {
+    console.log("clicked team ", team)
+    this.router.navigate([`/source/view-team/${team._id}`]);
+  }
 }

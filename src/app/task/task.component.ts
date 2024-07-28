@@ -33,4 +33,8 @@ tasks: any;
   openCreateTask(){
     this.router.navigate([`/source/task-create`]);
   }
+
+  openTask(task : any){
+    this.router.navigate([`/source/view-task/${task?._id}`]);
+  }
 }

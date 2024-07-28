@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-board',
@@ -9,7 +10,9 @@ import { UserService } from '../services/user.service';
 export class BoardComponent {
   users: any;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     console.log(this.userService.getCompany())
@@ -20,6 +23,12 @@ export class BoardComponent {
       console.log(this.users)
     }
    )
+  }
+
+  openMem(row: any) {
+    console.log("in board comp ",row);
+   this.router.navigate([`/source/view-member/${row?.user?._id}` ])
+
   }
 
 }

@@ -41,4 +41,9 @@ export class SidebarComponent {
   this.activeFeild = way ;
   }
 
+  logOut(){
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
 }

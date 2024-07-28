@@ -16,7 +16,7 @@
               <th>Team Name</th>
               <th>Number of Tasks</th>
             </tr>
-            <tr *ngFor="let row of users">
+            <tr *ngFor="let row of users" (click)="openMem(row)">
               <td>{{ row.user.name }}</td>
               <td>{{ row.teamName }}</td>
               <td>{{ row.numberOfTasks }}</td>

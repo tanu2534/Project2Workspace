@@ -4,7 +4,7 @@
       <span class="material-symbols-outlined edit">
        emergency
       </span>
-      <p>{{com}}</p>
+      <p>Company Name</p>
     </div>
 
     <div class="field-head">
@@ -55,7 +55,7 @@
         <p>Communication</p>
     </div>
     
-    <div class="fields files" >
+    <div class="fields files" (click)="logOut()"  [class.active]="activeFeild === 'login'" >
          <span class="material-symbols-outlined">
          draft
          </span>

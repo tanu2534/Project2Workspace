@@ -19,7 +19,7 @@
                 <h5>Team Lead: {{team.teamLeadName}}</h5>
                 <h5>Members: {{team.members.length}}</h5>
                 <div class="acts">
-                    <button id="view-team">View Team</button>
+                    <button id="view-team"  (click)="gotoViewTeam(team)">View Team</button>
                     <button id="dismiss-team">Dismiss Team</button>
                 </div>
             </div>

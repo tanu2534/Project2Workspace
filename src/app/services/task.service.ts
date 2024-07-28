@@ -18,4 +18,8 @@ export class TaskService {
   findAllByQuary(quary:any){
     return this.http.post(`${this.apiUrl}/${this.service}/find`, quary);
   }
+
+  getTaskById(id:any){
+    return this.http.get(`${this.apiUrl}/${this.service}/${id}`);
+  }
 }

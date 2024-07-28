@@ -15,6 +15,10 @@ import { CreateProjectComponent } from './projects/create-project/create-project
 import { CreateTaskComponent } from './task/create-task/create-task.component';
 import { CreateTeamComponent } from './team/create-team/create-team.component';
 import { LoginComponent } from './login/login.component';
+import { ViewProjectComponent } from './projects/view-project/view-project.component';
+import { ViewTeamComponent } from './team/view-team/view-team.component';
+import { ViewTaskComponent } from './task/view-task/view-task.component';
+import { ViewMemberComponent } from './view-member/view-member.component';
 
 const routes: Routes = [
  {
@@ -56,12 +60,24 @@ const routes: Routes = [
       component: CreateProjectComponent
     },
     {
+      path: 'view-project/:id',
+      component: ViewProjectComponent
+    },
+    {
       path: 'team-create',
       component: CreateTeamComponent
     },
     {
+      path: 'view-team/:id',
+      component: ViewTeamComponent
+    },
+    {
       path: 'task',
       component: TaskComponent
+    },
+    {
+      path: 'view-task/:id',
+      component: ViewTaskComponent
     },
     {
       path: 'task-create',
@@ -78,6 +94,11 @@ const routes: Routes = [
     {
       path: 'communication',
       component: CommunicationComponent
+    },
+    {
+      path: 'view-member/:id',
+      component: ViewMemberComponent
+
     }
   ]
  }

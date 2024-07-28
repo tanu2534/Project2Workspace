@@ -49,6 +49,10 @@ import { CreateProjectComponent } from './projects/create-project/create-project
 import { CreateTaskComponent } from './task/create-task/create-task.component';
 import { CreateTeamComponent } from './team/create-team/create-team.component';
 import { LoginComponent } from './login/login.component';
+import { ViewProjectComponent } from './projects/view-project/view-project.component';
+import { ViewTeamComponent } from './team/view-team/view-team.component';
+import { ViewTaskComponent } from './task/view-task/view-task.component';
+import { ViewMemberComponent } from './view-member/view-member.component';
 
 // import { TaskComponent } from './task/task.component';
 // import { UtilityModule } from './utility/utility.module';
@@ -81,6 +85,10 @@ import { LoginComponent } from './login/login.component';
     CreateTaskComponent,
     CreateTeamComponent,
     LoginComponent,
+    ViewProjectComponent,
+    ViewTeamComponent,
+    ViewTaskComponent,
+    ViewMemberComponent,
   ],
   imports: [
     BrowserModule,

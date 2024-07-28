@@ -56,6 +56,12 @@ export class ProjectsComponent {
     )
   }
 
+  gotoViewProj(project: any) {
+    console.log("clicked project ", project)
+    this.router.navigate([`/source/view-project/${project._id}`]);
+
+  }
+
   onOptionChange() {
     // Call your function here
     console.log('Selected option:', this.selectedOption);

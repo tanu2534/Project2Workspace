@@ -37,7 +37,7 @@
           
               <mat-action-row>
                 <div class="acts">
-                  <button id="view-proj">View Project</button>
+                  <button id="view-proj" (click)="gotoViewProj(panel)" >View Project</button>
                   <button id="dismiss-proj">Dismiss Project</button>
                 </div>
                 <button mat-button color="primary" (click)="nextStep()">Next</button>
