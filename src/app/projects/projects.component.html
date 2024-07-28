@@ -7,7 +7,7 @@
         <mat-radio-button value="not-started">Projects not started</mat-radio-button>
     </mat-radio-group>
     
-        <div class="panal-comp shadow" (click)="openCreateProj()">
+        <div  *ngIf="isAdmin" class="panal-comp shadow" (click)="openCreateProj()"  >
             <span class="material-symbols-outlined">
                 add_circle
                 </span>
@@ -38,7 +38,7 @@
               <mat-action-row>
                 <div class="acts">
                   <button id="view-proj" (click)="gotoViewProj(panel)" >View Project</button>
-                  <button id="dismiss-proj">Dismiss Project</button>
+                  <button *ngIf="isAdmin" id="dismiss-proj">Dismiss Project</button>
                 </div>
                 <button mat-button color="primary" (click)="nextStep()">Next</button>
               </mat-action-row>

@@ -12,6 +12,8 @@ company : any ;
 tasks: any;
   completedTasksCount: any;
   runningTasksCount: any;
+  isAdmin : boolean = false;
+  isTeamlead : boolean = false;
   
   constructor(private router : Router, private taskService: TaskService, private userService: UserService){
 
@@ -27,7 +29,12 @@ tasks: any;
       this.completedTasksCount = this.tasks?.filter((task: any) => task.status === 'completed')?.length;
       this.runningTasksCount = this.tasks?.filter((task: any) => task.status === 'in-progress')?.length;
     })
-   )
+   );
+
+   const a = this.userService.getUser();
+   console.log(" this user ",a);
+   this.isAdmin = (a?.role !== 'member' && a?.role !== 'team-lead');
+   this.isTeamlead = (a?.role === 'team-lead');
  }
 
   openCreateTask(){

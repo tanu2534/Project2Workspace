@@ -5,7 +5,7 @@
             <div class="search shadow">
                 <app-search></app-search>
             </div>
-            <button class="shadow" (click)="openCreateTeam()">Add new Team</button>      
+            <button *ngIf="isAdmin" class="shadow" (click)="openCreateTeam()">Add new Team</button>      
         </div>
     </div>
     <div class="h-line"></div>
@@ -20,7 +20,7 @@
                 <h5>Members: {{team.members.length}}</h5>
                 <div class="acts">
                     <button id="view-team"  (click)="gotoViewTeam(team)">View Team</button>
-                    <button id="dismiss-team">Dismiss Team</button>
+                    <button *ngIf="isAdmin" id="dismiss-team">Dismiss Team</button>
                 </div>
             </div>
 

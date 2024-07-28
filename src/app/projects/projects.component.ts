@@ -14,6 +14,7 @@ export class ProjectsComponent {
   company: any;
   projects: any;
   selectedOption: string = 'in-progress'; 
+  isAdmin : boolean = false;
 
   constructor(private router : Router,
     private projectService: ProjectService,
@@ -26,6 +27,9 @@ export class ProjectsComponent {
 
     this.company =  this.userService.getCompany();
     this.loadProjects({companyId: this.company, status: this.selectedOption});
+    const a = this.userService.getUser();
+    console.log(" this user ",a);
+    this.isAdmin = (a?.role !== 'member' && a?.role !== 'team-lead');
   }
 
   openCreateProj(){

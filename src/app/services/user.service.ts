@@ -45,6 +45,12 @@ export class UserService {
     const res = JSON.parse(data)
     return res.user.name;
   }
+
+  getUser(){
+    const data =  localStorage.getItem('userData')?? '';
+    const res = JSON.parse(data)
+    return res.user;
+  }
   getEmail(){
     const data =  localStorage.getItem('userData')?? '';
     const res = JSON.parse(data)
@@ -62,5 +68,9 @@ export class UserService {
 
   getUserById(id:any){
     return this.http.get(`${this.apiUrl}/${this.service}/${id}`)
+  }
+
+  capatializeFirstLetterAfterSpace(str: string) {
+    return str.replace(/\b\w/g, (char) => char.toUpperCase());
   }
 }

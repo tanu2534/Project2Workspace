@@ -30,7 +30,7 @@ export class SidebarComponent {
     this.companyService.getCompanyById(com).subscribe(
       (res: any)=>{
         console.log("asdsd",res);
-        this.com = res?.name;
+        this.com = this.userService.capatializeFirstLetterAfterSpace(res?.name);
       }
     )
   }

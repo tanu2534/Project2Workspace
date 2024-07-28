@@ -11,6 +11,8 @@ import { UserService } from '../services/user.service';
 export class TeamComponent  {
   company: any;
   teams:any ;
+  isAdmin: boolean = false;
+  isTeamlead: boolean = false;
 
   constructor(private router : Router, private teamService: TeamService, private userService: UserService) {
     
@@ -25,6 +27,11 @@ export class TeamComponent  {
         this.teams = response ;
       }
     )
+
+    const a = this.userService.getUser();
+    console.log(" this user ",a);
+    this.isAdmin = (a?.role !== 'member' && a?.role !== 'team-lead');
+    this.isTeamlead = (a?.role === 'team-lead');
   }
   openCreateTeam(){
     this.router.navigate([`/source/team-create`]);
