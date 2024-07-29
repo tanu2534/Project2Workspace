@@ -30,6 +30,22 @@
     </div>
     <div class="m2">
       <!-- <app-board-form></app-board-form> -->
+      <mat-vertical-stepper class="stepper" [linear]="false" #stepper [animationDuration]="duration">
+        <mat-step >
+
+        </mat-step>
+        <mat-step >
+        
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          You are now done.
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
     
     </div>
   </div>

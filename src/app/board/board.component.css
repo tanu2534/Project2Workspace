@@ -29,6 +29,10 @@
     background-color: #292929;
     margin-left: 13px;
   }
+  /* .m2 div{
+    height: 100%;
+    width: 100%;
+  } */
   .card-sec{
     display: flex;
     flex-direction: row;
@@ -93,4 +97,9 @@
   
   tr:nth-child(even) {
     background-color: #292929;
+  }
+
+  .stepper {
+    height: 80%;
+    width: 100%;
   }

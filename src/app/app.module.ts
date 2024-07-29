@@ -13,7 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatStepperModule } from '@angular/material/stepper';
+// import { MatStepperModule } from '@angular/material/stepper';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatExpansionModule} from '@angular/material/expansion';
 // import { MatRadioModule } from '@angular/material/radio';
@@ -53,6 +53,7 @@ import { ViewProjectComponent } from './projects/view-project/view-project.compo
 import { ViewTeamComponent } from './team/view-team/view-team.component';
 import { ViewTaskComponent } from './task/view-task/view-task.component';
 import { ViewMemberComponent } from './view-member/view-member.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 // import { TaskComponent } from './task/task.component';
 // import { UtilityModule } from './utility/utility.module';
@@ -109,7 +110,8 @@ import { ViewMemberComponent } from './view-member/view-member.component';
     MatButtonModule,
     MatStepperModule,
     MatChipsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    // MatStepperModule
   ],
   providers: [  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent]

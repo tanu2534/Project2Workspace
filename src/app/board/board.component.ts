@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class BoardComponent {
   users: any;
+  duration: any = '100'
 
   constructor(private userService: UserService,
     private router: Router
