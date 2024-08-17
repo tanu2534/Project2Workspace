@@ -54,7 +54,7 @@ import { ViewTeamComponent } from './team/view-team/view-team.component';
 import { ViewTaskComponent } from './task/view-task/view-task.component';
 import { ViewMemberComponent } from './view-member/view-member.component';
 import {MatStepperModule} from '@angular/material/stepper';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 // import { TaskComponent } from './task/task.component';
 // import { UtilityModule } from './utility/utility.module';
 
@@ -111,6 +111,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatStepperModule,
     MatChipsModule,
     MatExpansionModule,
+    MatProgressSpinnerModule
     // MatStepperModule
   ],
   providers: [  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],

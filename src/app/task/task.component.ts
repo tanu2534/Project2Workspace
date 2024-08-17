@@ -33,7 +33,7 @@ tasks: any;
 
    const a = this.userService.getUser();
    console.log(" this user ",a);
-   this.isAdmin = (a?.role !== 'member' && a?.role !== 'team-lead');
+   this.isAdmin = (this.userService.getUser()?.role != 'team-lead' && this.userService.getUser()?.role != 'member');
    this.isTeamlead = (a?.role === 'team-lead');
  }
 

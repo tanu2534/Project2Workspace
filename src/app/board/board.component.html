@@ -29,14 +29,33 @@
       </div>
     </div>
     <div class="m2">
-      <!-- <app-board-form></app-board-form> -->
+      <div>Recent Activity Log</div>
       <mat-vertical-stepper class="stepper" [linear]="false" #stepper [animationDuration]="duration">
-        <mat-step >
+        <ng-container *ngIf="isadmin">
+          <mat-step *ngFor="let task of response" style="white-space: normal; word-wrap: break-word;">
+            <ng-template matStepLabel ><p  class="step-label">{{ task?.assigneesName.toString().split(' ')[0] }} completed task</p></ng-template>
+            <p>Task: {{task?.name }}</p>
+            <p>Project : {{ task?.projectName }}</p>
+            <p>Time: {{ task?.endDate | date:'short' }}</p>
+          </mat-step>
+        </ng-container>
+    
+        <ng-container *ngIf="!isadmin">
+          <mat-step *ngFor="let task of response">
+            <ng-template matStepLabel><p>{{ task?.name }}</p></ng-template>
+            <p>Project: {{ task?.projectName }}</p>
+            <p>Priority: {{ task?.priority }}</p>
+            <p>status: {{ task?.status }}</p>
+            <p>Deadline: {{ task?.deadline |  date:'short' }}</p>
+            <button  class="mark-btn" color="primary" (click)="markTaskAsDone(task)">
+              <div *ngIf="loader" class="loader"></div>
+              <p>Done</p>
 
-        </mat-step>
-        <mat-step >
-        
-        </mat-step>
+            </button>
+
+          </mat-step>
+        </ng-container>
+    
         <mat-step>
           <ng-template matStepLabel>Done</ng-template>
           You are now done.
@@ -46,6 +65,5 @@
           </div>
         </mat-step>
       </mat-vertical-stepper>
-    
     </div>
   </div>

@@ -22,7 +22,7 @@
     <div class="h-line"></div>
     <div class="panal shadow">
         <ul>
-            <li *ngIf="isTeamlead" class="shadow" (click)="openCreateTask()">
+            <li *ngIf="isTeamlead  || isAdmin" class="shadow" (click)="openCreateTask()">
                 <span class="material-symbols-outlined">
                     add_circle
                     </span>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +23,12 @@ export class TaskService {
   getTaskById(id:any){
     return this.http.get(`${this.apiUrl}/${this.service}/${id}`);
   }
+
+  updateTask(id:any, data:any){
+    return this.http.put(`${this.apiUrl}/${this.service}/${id}`, data);
+  }
+
+  // findTaskByQuary(quary: any){
+  //   return this.http.post(``)
+  // }
 }
