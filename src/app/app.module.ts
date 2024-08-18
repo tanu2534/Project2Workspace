@@ -97,7 +97,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatTableModule,
     MatIconModule,
     MatTabsModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
