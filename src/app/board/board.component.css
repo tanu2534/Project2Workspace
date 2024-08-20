@@ -194,5 +194,12 @@
   word-wrap: break-word; /* Breaks long words */
   overflow-wrap: break-word; /* Handles long unbreakable words */
 }
+.loading{
+  margin-inline: 20px;
+  align-self: center;
+  margin-block: 20px;
+  text-align: center;
+  opacity: 0.5;
+}
 
    

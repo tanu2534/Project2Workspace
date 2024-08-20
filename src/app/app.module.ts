@@ -55,6 +55,7 @@ import { ViewTaskComponent } from './task/view-task/view-task.component';
 import { ViewMemberComponent } from './view-member/view-member.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { BarChartComponent } from './chart/chart.component';
 // import { TaskComponent } from './task/task.component';
 // import { UtilityModule } from './utility/utility.module';
 
@@ -90,6 +91,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ViewTeamComponent,
     ViewTaskComponent,
     ViewMemberComponent,
+    BarChartComponent,
   ],
   imports: [
     BrowserModule,

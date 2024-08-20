@@ -17,12 +17,12 @@
     <div class="h-line opacity"></div>
     <div id="entries" class="shadow">
         <div class="entri-header">
-            <div class="entries-box"><p>Projects Report</p></div>
+            <div class="entries-box" (click)="report = true"><p>Projects Report</p></div>
             <div class="v-line"></div>
-            <div class="entries-box"><p>View Project Analytics</p></div>
+            <div class="entries-box" (click)="createCharts()"><p>View Project Analytics</p></div>
         </div>
         <div id="entri-area">
-          <mat-accordion class="example-headers-align">
+          <mat-accordion *ngIf="report" class="example-headers-align">
             <mat-expansion-panel *ngFor="let panel of projects; let i = index" [expanded]="step === i" (opened)="setStep(i)" hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -46,6 +46,10 @@
           </mat-accordion>
           
               
+        </div>
+        <div id="analytics-view" *ngIf="!report">
+          <h2>Comparative Project Analysis</h2>
+          <canvas id="comparativeChart" height="10px" width="10px"></canvas>
         </div>
     </div>
 </div>

@@ -1,18 +1,24 @@
 <div class="main-content board">
     <div class="m1">
       <div class="card-sec">
-        <div class="card mr"><div class="card-cont"></div></div>
-        <div class="card mr"><div class="card-cont"></div></div>
-        <div class="card "><div class="card-cont"></div></div>
+        <div class="card mr"><div class="card-cont">
+          <app-bar-chart [data]="data" [type]="'bar'"></app-bar-chart>
+        </div></div>
+        <div class="card mr"><div class="card-cont">
+          <app-bar-chart [data]="Priorties" [type]="'line'"></app-bar-chart>
+        </div></div>
+        <div class="card "><div class="card-cont">
+          <app-bar-chart [data]="data1" [type]="'bar'"></app-bar-chart>
+        </div></div>
       </div>
       <div class="list-sec">
-        <div class="head-info"><p>Violations of quality rules</p></div>
+        <div class="head-info"><p>Organization Members</p></div>
         
          <div class="table">
          
-          <table>
+          <table *ngIf="users && users.length > 0; else noDataTemplate">
             <tr>
-              <th>FEmployee Name</th>
+              <th>Employee Name</th>
               <th>Team Name</th>
               <th>Number of Tasks</th>
             </tr>
@@ -23,6 +29,12 @@
             </tr>
           </table>
           
+          <!-- Template to show when no data is available -->
+          <ng-template #noDataTemplate>
+            <div *ngIf="!users" class="loading">Loading data...</div>
+            <div *ngIf="users && users.length === 0" class="loading">No data available</div>
+          </ng-template>
+          
 
 
         </div> 
@@ -30,12 +42,15 @@
     </div>
     <div class="m2">
       <div>Recent Activity Log</div>
-      <mat-vertical-stepper class="stepper" [linear]="false" #stepper [animationDuration]="duration">
+      
+      <!-- Check if response is available and has data -->
+      <mat-vertical-stepper class="stepper" [linear]="false" #stepper [animationDuration]="duration" *ngIf="response && response.length > 0; else noDataTemplate">
+        
         <ng-container *ngIf="isadmin">
           <mat-step *ngFor="let task of response" style="white-space: normal; word-wrap: break-word;">
-            <ng-template matStepLabel ><p  class="step-label">{{ task?.assigneesName.toString().split(' ')[0] }} completed task</p></ng-template>
-            <p>Task: {{task?.name }}</p>
-            <p>Project : {{ task?.projectName }}</p>
+            <ng-template matStepLabel><p class="step-label">{{ task?.assigneesName.toString().split(' ')[0] }} completed task</p></ng-template>
+            <p>Task: {{ task?.name }}</p>
+            <p>Project: {{ task?.projectName }}</p>
             <p>Time: {{ task?.endDate | date:'short' }}</p>
           </mat-step>
         </ng-container>
@@ -45,25 +60,31 @@
             <ng-template matStepLabel><p>{{ task?.name }}</p></ng-template>
             <p>Project: {{ task?.projectName }}</p>
             <p>Priority: {{ task?.priority }}</p>
-            <p>status: {{ task?.status }}</p>
-            <p>Deadline: {{ task?.deadline |  date:'short' }}</p>
-            <button  class="mark-btn" color="primary" (click)="markTaskAsDone(task)">
+            <p>Status: {{ task?.status }}</p>
+            <p>Deadline: {{ task?.deadline | date:'short' }}</p>
+            <button class="mark-btn" color="primary" (click)="markTaskAsDone(task)">
               <div *ngIf="loader" class="loader"></div>
               <p>Done</p>
-
             </button>
-
           </mat-step>
         </ng-container>
     
         <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          You are now done.
+          <ng-template matStepLabel><p>You are now done</p></ng-template>
+
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button matStepperPrevious><p>Back</p></button>
+            <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
           </div>
         </mat-step>
       </mat-vertical-stepper>
+    
+      <!-- Template to show when no data is available or loading -->
+      <ng-template #noDataTemplate>
+        <div *ngIf="!response">Loading activities...</div>
+        <div *ngIf="response && response.length === 0">No recent activities available</div>
+      </ng-template>
+    
     </div>
+    
   </div>
