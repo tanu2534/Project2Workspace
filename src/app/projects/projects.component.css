@@ -171,3 +171,8 @@ canvas {
 
   /* height: auto !important; */
 }
+
+.active {
+  background-color: #006741;
+  color: white;
+}

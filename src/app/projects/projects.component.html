@@ -7,7 +7,7 @@
         <mat-radio-button value="not-started">Projects not started</mat-radio-button>
     </mat-radio-group>
     
-        <div  *ngIf="isAdmin" class="panal-comp shadow" (click)="openCreateProj()"  >
+        <div  *ngIf="isAdmin" class="panal-comp shadow"  style="cursor: pointer;" (click)="openCreateProj()"  >
             <span class="material-symbols-outlined">
                 add_circle
                 </span>
@@ -17,9 +17,9 @@
     <div class="h-line opacity"></div>
     <div id="entries" class="shadow">
         <div class="entri-header">
-            <div class="entries-box" (click)="report = true"><p>Projects Report</p></div>
+            <div class="entries-box" (click)="report = true" style="cursor: pointer;" [class.active]="report"><p>Projects Report</p></div>
             <div class="v-line"></div>
-            <div class="entries-box" (click)="createCharts()"><p>View Project Analytics</p></div>
+            <div class="entries-box" (click)="createCharts()" style="cursor: pointer;" [class.active]="!report" ><p>View Project Analytics</p></div>
         </div>
         <div id="entri-area">
           <mat-accordion *ngIf="report" class="example-headers-align">
@@ -37,8 +37,8 @@
           
               <mat-action-row>
                 <div class="acts">
-                  <button id="view-proj" (click)="gotoViewProj(panel)" >View Project</button>
-                  <button *ngIf="isAdmin" id="dismiss-proj">Dismiss Project</button>
+                  <button id="view-proj" (click)="gotoViewProj(panel)" style="cursor: pointer;" >View Project</button>
+                  <button *ngIf="isAdmin" id="dismiss-proj" style="cursor: pointer;">Dismiss Project</button>
                 </div>
                 <button mat-button color="primary" (click)="nextStep()">Next</button>
               </mat-action-row>
