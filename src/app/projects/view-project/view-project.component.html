@@ -1,1 +1,58 @@
-<p>view-project works!</p>
+<div class="main-cont">
+
+    <div class="project-view" *ngIf="project">
+        <header class="project-header">
+          <h1>{{ project.name }}</h1>
+          <span class="project-tag">{{ project.tag }}</span>
+        </header>
+      
+        <section class="project-info">
+          <div class="info-item">
+            <i class="fas fa-user-tie"></i>
+            <span>Team Lead : <span style="background-color: rgba(255, 255, 255, 0.384); opacity: 0.8; padding-inline: 5px; border-radius: 4px;">{{ project.teamLeadName }}</span></span>
+          </div>
+          <div class="info-item">
+            <i class="far fa-envelope"></i>
+            <span>Email: {{ teamLead.email }}</span>
+          </div>
+          <div class="info-item">
+            <i class="far fa-calendar-alt"></i>
+            <span>Start Date: {{ project.startDate | date:'mediumDate' }}</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-chart-line"></i>
+            <span>Status: {{ project.status }}</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-flag"></i>
+            <span [class]="getPriorityClass()">Priority: {{ project.priority }}</span>
+          </div>
+        </section>
+      
+        <section class="project-description">
+          <h2>Description</h2>
+          <p>{{ project.description }}</p>
+        </section>
+      
+        <section class="project-notes">
+          <h2>Notes</h2>
+          <p>{{ project.notes }}</p>
+        </section>
+      
+        <section class="project-tasks">
+          <h2>Tasks</h2>
+          <div class="task-list">
+            <div *ngFor="let task of tasks" class="task-item">
+              <h3>{{ task.name }}</h3>
+              <p>{{ task.description }}</p>
+              <div class="task-info">
+                <span [class]="getStatusClass(task.status)">{{ task.status }}</span>
+                <span>Assignee: {{ task.assigneesName }}</span>
+                <span class="task-due-date">Due: {{ task.deadline | date:'mediumDate' }}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+</div>
+

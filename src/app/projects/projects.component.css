@@ -113,6 +113,7 @@
   width: 140px;
   margin-left: 15px;
   font-family: "Poppins", sans-serif !important;
+  border-radius: 4px;
 }
 #view-proj{
   background-color: transparent;

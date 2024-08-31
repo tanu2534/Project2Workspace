@@ -26,14 +26,14 @@
             <mat-expansion-panel *ngFor="let panel of projects; let i = index" [expanded]="step === i" (opened)="setStep(i)" hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Project Name: {{ panel.name }}
+                  <span style="opacity: 0.7; color: #04AA6D; margin-right: 5px;">Project Name : </span>  {{ panel.name }}
                 </mat-panel-title>
                 <mat-panel-description>
-                  Assign to: {{ panel.teamLeadName }}
+                 <span style="display: inline-block;">  </span> <div style="background-color: rgba(255, 255, 255, 0.384); opacity: 0.7; padding-inline: 5px; border-radius: 4px;">{{ panel.teamLeadName }}</div> 
                 </mat-panel-description>
               </mat-expansion-panel-header>
               
-              <div>Description: {{ panel.description }}</div>
+              <div><span style="opacity: 0.7; color: #04AA6D; margin-right: 5px;">Description: </span> {{ panel.description }}</div>
           
               <mat-action-row>
                 <div class="acts">

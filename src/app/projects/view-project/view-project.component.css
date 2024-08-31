@@ -1,0 +1,104 @@
+.project-view {
+    max-width: 1000px;
+    /* margin: 0 auto; */
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+  
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+  
+      h1 {
+        font-size: 28px;
+        color: #ffffffe0;
+      }
+  
+      .project-tag {
+        background-color: #007bff;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+    }
+  
+    .project-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+  
+      .info-item {
+        display: flex;
+        align-items: center;
+        
+        i {
+          margin-right: 10px;
+          color: #007bff;
+        }
+      }
+    }
+  
+    .project-description, .project-notes {
+      margin-bottom: 30px;
+  
+      h2 {
+        font-size: 20px;
+        color: #ffffff8a;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        line-height: 1.6;
+        color: #ececec;
+      }
+    }
+  
+    .project-tasks {
+      .task-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+  
+      .task-item {
+        background-color: #5a7f67;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+        h3 {
+          margin-top: 0;
+          color: #ffffff;
+        }
+  
+        p {
+          color: #d7d7d7
+        }
+  
+        .task-info {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          margin-top: 10px;
+  
+          span {
+            font-size: 0.9em;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  
+    .priority-high, .status-completed { color: #28a745; }
+    .priority-medium, .status-in-progress { color: #ffc107; }
+    .priority-low, .status-not-started { color: #dc3545; }
+  }
+
+  .main-cont{
+    /* overflow-y: auto;
+     */
+     width: 100%;
+  }
