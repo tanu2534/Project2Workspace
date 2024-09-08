@@ -1,36 +1,41 @@
 <div class="main-cont">
     <div class="table shadow">
-        <table style="width: 80%;">
-            <tr>
-                <th>Task Name</th>
-                <th>Project</th>
-                <th>Priority</th>
-                <th>Assignee</th>
-                <th>Status</th>
-
-              </tr>
-              <tr *ngFor="let i of tasks" (click)="openTask(i)">
-                <td>{{i.name}}</td>
-                <td>{{i.projectName}}</td>
-                <td>{{i.priority}}</td>
-                <td>{{i.assigneesName}}</td>
-                <td>{{i.status}}</td>
-              </tr>
-        </table>
+      <table *ngIf="!graph" style="width: 80%;">
+        <tr>
+          <th>Task Name</th>
+          <th>Project</th>
+          <th>Priority</th>
+          <th>Assignee</th>
+          <th>Status</th>
+        </tr>
+        <tr *ngFor="let i of tasks" (click)="openTask(i)">
+          <td>{{ i.name }}</td>
+          <td>{{ i.projectName }}</td>
+          <td>{{ i.priority }}</td>
+          <td>{{ i.assigneesName }}</td>
+          <td>{{ i.status }}</td>
+        </tr>
+      </table>
+      
+      <div *ngIf="graph" class="graph gr table shadow">
+        <canvas id="comparativeChart" height="400px" width="900px"></canvas>
+      </div>
     </div>
+    
     <h3>Task Analytics</h3>
     <div class="h-line"></div>
+    
     <div class="panal shadow">
-        <ul>
-            <li *ngIf="isTeamlead  || isAdmin" class="shadow" (click)="openCreateTask()">
-                <span class="material-symbols-outlined">
-                    add_circle
-                    </span>
-                Add new task</li>
-            <li class="shadow">View Graph</li>
-            <li>Total Tasks : {{tasks?.length}}</li>
-            <li>Running : {{runningTasksCount}} </li>
-            <li>Closed : {{completedTasksCount}} </li>
-        </ul>
+      <ul>
+        <li *ngIf="isTeamlead || isAdmin" class="shadow" style="border-radius: 4px; height: 30px" (click)="openCreateTask()">
+          <span class="material-symbols-outlined">add_circle</span> Add new task
+        </li>
+        <li *ngIf="!graph" class="shadow" style="border-radius: 4px; height: 30px;" (click)="openGraph()">View Graph</li>
+        <li *ngIf="graph" class="shadow" style="border-radius: 4px; height: 30px;" (click)="openGraph()">View Table</li>
+        <li>Total Tasks : {{ tasks?.length }}</li>
+        <li>Running : {{ runningTasksCount }} </li>
+        <li>Closed : {{ completedTasksCount }} </li>
+      </ul>
     </div>
-</div>
+  </div>
+  

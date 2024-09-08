@@ -10,6 +10,7 @@ import { TaskService } from '../../services/task.service';
 export class ViewTaskComponent {
 
   taskId : any = this.router.url.split('/').pop();
+  task: any;
 
   constructor(private router : Router, private taskService: TaskService){
   }
@@ -18,10 +19,19 @@ export class ViewTaskComponent {
    this.getTask(this.taskId)
  }
 
+ getPriorityClass(): string {
+  return `priority-${this.task.priority.toLowerCase()}`;
+}
+
+getStatusClass(): string {
+  return `status-${this.task.status.toLowerCase().replace(' ', '-')}`;
+}
+
  getTask(id:any){
    this.taskService.getTaskById(id).subscribe(
      ((res:any)=>{
        console.log(res)
+       this.task = res;
      })
    )
  }

@@ -2,10 +2,10 @@
     <div class="above ">
         <h2>Team&#47;s</h2>
         <div>
-            <div class="search shadow">
+            <!-- <div class="search shadow">
                 <app-search></app-search>
-            </div>
-            <button *ngIf="isAdmin" class="shadow" (click)="openCreateTeam()">Add new Team</button>      
+            </div> -->
+            <button *ngIf="isAdmin" class="shadow" style="border-radius: 4px; cursor: pointer;" (click)="openCreateTeam()">Add new Team</button>      
         </div>
     </div>
     <div class="h-line"></div>
@@ -15,12 +15,12 @@
             <div class="sqare-team-info shadow" *ngFor="let team of teams">
                 <h3>{{team.name}}</h3>
                 <div class="h-line"></div>
-                <h5>Department: {{team.department}}</h5>
-                <h5>Team Lead: {{team.teamLeadName}}</h5>
-                <h5>Members: {{team.members.length}}</h5>
+                <h5><span style="font-size: 13px!important; opacity: 0.5; font-weight: 400!important; margin-right: 3px;">Department:</span> {{team.department}}</h5>
+                <h5><span style="font-size: 13px!important; opacity: 0.5; font-weight: 400!important; margin-right: 3px;">Team Lead:</span> {{team.teamLeadName}}</h5>
+                <h5><span style="font-size: 13px!important; opacity: 0.5; font-weight: 400!important; margin-right: 3px;">Members:</span> {{team.members.length}}</h5>
                 <div class="acts">
-                    <button id="view-team"  (click)="gotoViewTeam(team)">View Team</button>
-                    <button *ngIf="isAdmin" id="dismiss-team">Dismiss Team</button>
+                    <button id="view-team" style="border-radius: 4px; cursor: pointer;"  (click)="gotoViewTeam(team)">View Team</button>
+                    <button *ngIf="isAdmin" style="border-radius: 4px; cursor: pointer;" id="dismiss-team">Dismiss Team</button>
                 </div>
             </div>
 

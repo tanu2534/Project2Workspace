@@ -1,1 +1,65 @@
-<p>view-task works!</p>
+<!-- task-details.component.html -->
+<div class="main-cont">
+    <div class="task-view" *ngIf="task">
+      <header class="task-header">
+        <h1>{{ task.name }}</h1>
+        <span class="task-project">{{ task.projectName }}</span>
+      </header>
+  
+      <section class="task-info">
+        <div class="info-item">
+          <i class="fas fa-user"></i>
+          <span>Assignee: <span class="highlight">{{ task.assigneesName }}</span></span>
+        </div>
+        <div class="info-item">
+          <i class="far fa-calendar-alt"></i>
+          <span>Start Date: {{ task.startDate | date:'mediumDate' }}</span>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-hourglass-end"></i>
+          <span>Deadline: {{ task.deadline | date:'mediumDate' }}</span>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-chart-line"></i>
+          <span [class]="getStatusClass()">Status: {{ task.status }}</span>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-flag"></i>
+          <span [class]="getPriorityClass()">Priority: {{ task.priority }}</span>
+        </div>
+      </section>
+  
+      <section class="task-description">
+        <h2>Description</h2>
+        <p>{{ task.description }}</p>
+      </section>
+  
+      <section class="project-details">
+        <h2>Project Details</h2>
+        <div style="display: flex; flex-direction: row;">
+
+            <div class="info-item">
+              <i class="fas fa-user-tie"></i>
+              <span>Team Lead: <span class="highlight">{{ task.project.teamLeadName }}</span></span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-tag"></i>
+              <span>Tag: {{ task.project.tag }}</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-chart-line"></i>
+              <span>Project Status: {{ task.project.status }}</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-flag"></i>
+              <span>Project Priority: {{ task.project.priority }}</span>
+            </div>
+        </div>
+      </section>
+  
+      <section class="project-notes">
+        <h2>Project Notes</h2>
+        <p>{{ task.project.notes }}</p>
+      </section>
+    </div>
+  </div>

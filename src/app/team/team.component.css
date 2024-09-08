@@ -103,5 +103,7 @@
     margin-top: 5px;
 }
 h5{
-    font-size: 1.05em;
+    font-size: 1.2em !important;
+    margin-block-end: 2px  !important;
+    opacity: 0.9;
 }

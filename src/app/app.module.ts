@@ -56,6 +56,10 @@ import { ViewMemberComponent } from './view-member/view-member.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { BarChartComponent } from './chart/chart.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+import { MatDividerModule } from '@angular/material/divider';
 // import { TaskComponent } from './task/task.component';
 // import { UtilityModule } from './utility/utility.module';
 
@@ -113,7 +117,10 @@ import { BarChartComponent } from './chart/chart.component';
     MatStepperModule,
     MatChipsModule,
     MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCardModule,
+    MatGridListModule,
+    MatDividerModule
     // MatStepperModule
   ],
   providers: [  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
