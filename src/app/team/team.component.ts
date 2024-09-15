@@ -14,7 +14,7 @@ export class TeamComponent  {
   isAdmin: boolean = false;
   isTeamlead: boolean = false;
 
-  constructor(private router : Router, private teamService: TeamService, private userService: UserService) {
+  constructor(private router : Router, private teamService: TeamService, public userService: UserService) {
     
   }
   ngOnInit(){

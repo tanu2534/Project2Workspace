@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class ViewMemberComponent {
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(public userService: UserService, private router: Router) { }
 
   memberId: any = this.router.url.split('/').pop();
   member: any;

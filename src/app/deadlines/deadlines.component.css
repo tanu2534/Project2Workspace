@@ -28,6 +28,8 @@ ul{
 }
 ul li{
     margin-left: 12%;
+    opacity: 0.8;
+    font-size: 14px;
 }
 ul li:nth-child(-n+1) {
     background-color: #04AA6D;

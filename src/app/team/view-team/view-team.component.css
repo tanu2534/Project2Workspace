@@ -1,0 +1,110 @@
+.team-view-container {
+    max-width: 1200px;
+    /* margin: 0 auto; */
+    padding: 2rem;
+    font-family: poppins;
+  }
+  
+  .team-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #e6f7ff;
+    font-size: large;
+  }
+  
+  .team-header h1 {
+    font-size: 2.5rem;
+    color: #ebebeb;
+    margin-bottom: 0.5rem;
+  }
+  
+  .department {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .team-details {
+    background-color: #292929;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 14px;
+  }
+  
+  .detail-item {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
+  .label {
+    font-weight: bold;
+    width: 150px;
+    color: #afafaf;
+  }
+  
+  .value {
+    flex: 1;
+  }
+  
+  .value.active {
+    color: green;
+  }
+  
+  .value.inactive {
+    color: red;
+  }
+  
+  .team-lead, .team-members {
+    margin-bottom: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    color: #d8d8d8;
+    margin-bottom: 1rem;
+  }
+  
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .member-card {
+    background-color: #292929;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    /* width: 400px; */
+ /* margin-left: 500px; */
+  }
+  
+  .lead-card {
+    background-color: #292929;
+  }
+  
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+  
+  .member-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #eeeeee;
+  }
+  
+  .member-info p {
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+    color: #aaaaaa;
+  }
+  
+  .task-count {
+    font-size: 0.8rem;
+    color: #888;
+  }
