@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';  // Import Toastr
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -120,7 +121,12 @@ import { MatDividerModule } from '@angular/material/divider';
     MatProgressSpinnerModule,
     MatCardModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    ToastrModule.forRoot({     // ToastrModule added
+      timeOut: 3000,           // 3 seconds timeout
+      positionClass: 'toast-bottom-right', // Position of the toast
+      preventDuplicates: true, // Prevent duplicate toasts
+    }),
     // MatStepperModule
   ],
   providers: [  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],

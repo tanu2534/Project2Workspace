@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^16.0.0",
+    "@angular/animations": "^16.2.12",
     "@angular/cdk": "^16.2.14",
     "@angular/common": "^16.0.0",
     "@angular/compiler": "^16.0.0",
@@ -22,7 +22,9 @@
     "@angular/router": "^16.0.0",
     "chart.js": "^4.4.3",
     "date-fns": "^3.6.0",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.14.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

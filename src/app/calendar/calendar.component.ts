@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { UserService } from '../services/user.service';
+import { startOfDay, endOfDay } from 'date-fns';
 
 interface CalendarDay {
   date: Date;
@@ -30,9 +31,15 @@ export class CalendarComponent implements OnInit {
   }
 
   constructor(private taskService: TaskService, private userService: UserService) {
+    const today = new Date();
+    const startOfToday = startOfDay(today);
+    const endOfToday = endOfDay(today);
     
    this.company = this.userService.getCompany()
-   this.taskService.findAllByQuary({companyId : this.company, status: 'in-progress', startDate: new Date()}).subscribe(
+   this.taskService.findAllByQuary({companyId : this.company, deadline : {
+     $gte: startOfToday,
+     $lte: endOfToday
+   }}).subscribe(
     ((res:any)=>{
       console.log("res from task ", res?.tasks)
       this.tasks = res?.tasks;
@@ -89,7 +96,7 @@ export class CalendarComponent implements OnInit {
   
     let da = new Date(day.date);
     let today = new Date();
-    if (da >= today) {
+    // if (da >= today) {
       console.log('Clicked date:', new Date(day.date).toISOString());
       this.taskService.findAllByQuary({
         companyId: this.company,
@@ -99,7 +106,7 @@ export class CalendarComponent implements OnInit {
         (res: any) => {
           this.isTask = true;
           console.log("res from clicked date ", res?.tasks);
-          this.collected = res?.tasks;
+          this.tasks = res?.tasks;
         },
         (err: any) => {
           console.log(err);
@@ -107,7 +114,7 @@ export class CalendarComponent implements OnInit {
         }
       );
       // Do something with the clicked date
-    }
+    // }
   }
 
   formatDateString(dateString: any) {

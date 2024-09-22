@@ -12,23 +12,27 @@
               'today': day.today,
               'other-month': !day.isSameMonth,
               'clicked': day.clicked
-            }" (click)="handleDayClick(day)">
+            }" (click)="day.isSameMonth && handleDayClick(day)">
               {{ day.date.getDate() }}
             </div>
           </div>
         </div>
       </div>
-     <div class="extend shadow">
-      <div *ngIf="!isTask">
-            <p>No deadlines found !</p>
+      <div class="extend shadow">
+        <div *ngIf="!tasks || tasks.length === 0" class="no-tasks">
+          <p>No tasks found!</p>
+        </div>
+        <div *ngIf="tasks && tasks?.length > 0" class="task-list">
+          <h4>Tasks:</h4>
+          <div *ngFor="let task of tasks" class="task-item">
+            <h5>{{ task.name }}</h5>
+            <p><strong>Description:</strong> {{ task.description }}</p>
+            <p><strong>Project:</strong> {{ task.projectName }}</p>
+            <p><strong>Assignee:</strong> {{ task.assigneesName }}</p>
+            <p><strong>Status:</strong> {{ task.status }}</p>
+            <p><strong>Priority:</strong> {{ task.priority }}</p>
+            <p><strong>Deadline:</strong> {{ task.deadline | date:'medium' }}</p>
+          </div>
+        </div>
       </div>
-      <div
-        *ngIf="isTask">
-      <h4>
-        Task/s are : 
-      </h4>
-      <div *ngFor="let task of collected">
-        <p>{{task.name}} - {{task.assigneesName}}</p><br>
-      </div>
-     </div> 
 </div>

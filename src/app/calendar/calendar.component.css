@@ -76,21 +76,77 @@
     align-items: center;
     justify-content: center;
   }
-  .extend{
+  
+  .calendar-day.clicked {
+    background-color: #4779b2; /* or any other color you want */
+  }
+  .extend {
     height: 30dvh;
     width: 40dvw;
     background-color: #292929;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    overflow-y: auto;
+    padding: 20px;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+  }
+  
+  .no-tasks {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    div p {
-      font-size: 14px;
-    }
+    height: 100%;
   }
-
-  .calendar-day.clicked {
-    background-color: #4779b2; /* or any other color you want */
+  
+  .no-tasks p {
+    font-size: 16px;
+    color: #888;
+  }
+  
+  .task-list h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #fff;
+  }
+  
+  .task-item {
+    background-color: #3a3a3a;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .task-item h5 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #4CAF50;
+  }
+  
+  .task-item p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .task-item strong {
+    color: #64B5F6;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #292929;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }

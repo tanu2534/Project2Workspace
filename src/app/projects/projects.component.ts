@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProjectService } from '../services/project.service';
 import { UserService } from '../services/user.service';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
+import Swal from 'sweetalert2';
 // import { Chart, registerables } from 'chart.js';
 
 
@@ -85,6 +86,59 @@ export class ProjectsComponent {
         console.error('Error loading projects:', error);
       }
     );
+  }
+
+  removeProject(sjdn: any) {
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      background: "#292929",
+      color: "#ffffff",
+      buttonsStyling: true,
+      denyButtonColor: "#d33",
+      confirmButtonColor: "#05faa0",
+      // iconColor: "#05faa0",
+      cancelButtonColor: "#d33"
+    });
+
+    swalWithBootstrapButtons.fire({
+      title: "Remove Member From Team?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true
+      
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Call service to delete member
+        // this.userService.removeMember().subscribe(response => {
+        //   swalWithBootstrapButtons.fire({
+        //     title: "Deleted!",
+        //     text: "The member has been removed.",
+        //     icon: "success"
+        //   });
+        //   this.router.navigate(['/team']); // Navigate back to the team page after deletion
+        // }, error => {
+        //   swalWithBootstrapButtons.fire({
+        //     title: "Error",
+        //     text: "Failed to delete the member.",
+        //     icon: "error"
+        //   });
+        // });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "The member is safe :)",
+          icon: "error"
+        });
+      }
+    });
+
   }
 
 

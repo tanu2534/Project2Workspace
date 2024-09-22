@@ -1,13 +1,16 @@
 <div class="main-cont">
-  <app-task-table *ngIf="!iscal"></app-task-table>
+  <div *ngIf="!iscal" class="table shadow" style="display: flex; align-items: center; justify-content: center;">
+    <canvas id="comparativeChart" height="400px" width="700px"></canvas>
+  </div>
   <app-calendar *ngIf="iscal"></app-calendar>
   <h3>Deadline Analytics</h3>
   <div class="h-line"></div>
   <div class="panal shadow">
       <ul>
-          <li class="shadow">View Graph</li>
-          <li>Total deadlines today : {{runningTasksCount?? 0}}</li>
-          <li>Completed deadlines today : {{completedTasksCount?? 0}}</li>
+          <!-- Correcting the event to call openGraph() -->
+          <li class="shadow" (click)="openGraph()">View Graph</li>
+          <li>Total deadlines today : {{runningTasksCount ?? 0}}</li>
+          <li>Completed deadlines today : {{completedTasksCount ?? 0}}</li>
       </ul>
   </div>
 </div>

@@ -73,4 +73,14 @@ export class UserService {
   capatializeFirstLetterAfterSpace(str: string) {
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
   }
+
+  // In user.service.ts
+removeMember(memberId: string) {
+  return this.http.delete(`/api/members/${memberId}`);
+}
+
+removeFromTeam(memberId: string) {
+  return this.http.patch(`/api/members/${memberId}/remove-from-team`, {});
+}
+
 }

@@ -1,80 +1,78 @@
 <div class="main-cont">
-    <div class="member-view-container" *ngIf="member">
-        <header class="member-header">
-          <img [src]="'https://api.dicebear.com/6.x/initials/svg?seed=' + member.name" alt="Member Avatar" class="avatar">
-          <div class="member-info">
-            <h1>{{userService.capatializeFirstLetterAfterSpace(member.name) || member.name }}</h1>
-            <p class="role">{{ member.role | titlecase }}</p>
-            <p class="email">{{ member.email }}</p>
-          </div>
-        </header>
-      
-        <!-- <section class="member-details">
-          <h2>Member Details</h2>
-          <div class="detail-item">
-            <span class="label">ID:</span>
-            <span class="value">{{ member._id }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="label">Company ID:</span>
-            <span class="value">{{ member.company }}</span>
-          </div>
-        </section> -->
-      
-        <section class="team-info" *ngIf="member.team">
-          <h2>Team Information</h2>
-          <div class="detail-item">
-            <span class="label">Team Name:</span>
-            <span class="value">{{userService.capatializeFirstLetterAfterSpace( member.team.name) || member.team.name }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="label">Department:</span>
-            <span class="value">{{ member.team.department | titlecase }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="label">Team Lead:</span>
-            <span class="value">{{ userService.capatializeFirstLetterAfterSpace( member.team.teamLeadName) || member.team.teamLeadName }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="label">Team Description:</span>
-            <span class="value">{{ member.team.description | titlecase }}</span>
-          </div>
-        </section>
-      
-        <section class="project-info" *ngIf="member.project">
-          <h2>Project Information</h2>
-          <div class="detail-item">
-            <span class="label">Project Name:</span>
-            <span class="value">{{ userService.capatializeFirstLetterAfterSpace( member.project.name) || member.project.name }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="label">Description:</span>
-            <span class="value">{{ member.project.description | titlecase }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="label">Status:</span>
-            <span class="value status-badge" [ngClass]="member.project.status">{{ member.project.status | titlecase }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="label">Priority:</span>
-            <span class="value priority-badge" [ngClass]="member.project.priority">{{ member.project.priority | titlecase }}</span>
-          </div>
-        </section>
-      
-        <section class="tasks-info" *ngIf="member.tasks && member.tasks.length > 0">
-          <h2>Assigned Tasks</h2>
-          <div class="task-card" *ngFor="let task of member.tasks">
-            <h3>{{ userService.capatializeFirstLetterAfterSpace( task.name) || task.name }}</h3>
-            <p>{{ task.description | titlecase }}</p>
-            <div class="task-details">
-              <span class="status-badge" [ngClass]="task.status">{{ task.status | titlecase }}</span>
-              <span class="priority-badge" [ngClass]="task.priority">{{ task.priority | titlecase }}</span>
-            </div>
-            <div class="task-dates">
-              <span>Start: {{ task.startDate | date:'mediumDate' }}</span>
-              <span>Deadline: {{ task.deadline | date:'mediumDate' }}</span>
-            </div>
-          </div>
-        </section>
+  <div class="member-view-container" *ngIf="member">
+    <header class="member-header">
+      <img [src]="'https://api.dicebear.com/6.x/initials/svg?seed=' + member.name" alt="Member Avatar" class="avatar">
+      <div class="member-info">
+        <h1>{{userService.capatializeFirstLetterAfterSpace(member.name) || member.name }}</h1>
+        <p class="role">{{ member.role | titlecase }}</p>
+        <p class="email">{{ member.email }}</p>
       </div>
+    </header>
+
+    <!-- Action Buttons: Remove Member and Remove from Team -->
+    <div class="action-buttons" *ngIf="isAdmin || isTeamLead">
+      <button class="btn btn-danger" *ngIf="isAdmin" (click)="removeMember()">Remove Member</button>
+
+      <button class="btn btn-warning" *ngIf="member.team && (isTeamLead || isAdmin)" (click)="removeFromTeam()">Remove from Team</button>
+    </div>
+
+    <section class="team-info" *ngIf="member.team">
+      <!-- Team Information -->
+      <h2>Team Information</h2>
+      <div class="detail-item">
+        <span class="label">Team Name:</span>
+        <span class="value">{{userService.capatializeFirstLetterAfterSpace( member.team.name) || member.team.name }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Department:</span>
+        <span class="value">{{ member.team.department | titlecase }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Team Lead:</span>
+        <span class="value">{{ userService.capatializeFirstLetterAfterSpace( member.team.teamLeadName) || member.team.teamLeadName }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Team Description:</span>
+        <span class="value">{{ member.team.description | titlecase }}</span>
+      </div>
+    </section>
+
+    <section class="project-info" *ngIf="member.project">
+      <!-- Project Information -->
+      <h2>Project Information</h2>
+      <div class="detail-item">
+        <span class="label">Project Name:</span>
+        <span class="value">{{ userService.capatializeFirstLetterAfterSpace( member.project.name) || member.project.name }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Description:</span>
+        <span class="value">{{ member.project.description | titlecase }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Status:</span>
+        <span class="value status-badge" [ngClass]="member.project.status">{{ member.project.status | titlecase }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Priority:</span>
+        <span class="value priority-badge" [ngClass]="member.project.priority">{{ member.project.priority | titlecase }}</span>
+      </div>
+    </section>
+
+    <section class="tasks-info" *ngIf="member.tasks && member.tasks.length > 0">
+      <!-- Assigned Tasks -->
+      <h2>Assigned Tasks</h2>
+      <div class="task-card" *ngFor="let task of member.tasks">
+        <h3>{{ userService.capatializeFirstLetterAfterSpace( task.name) || task.name }}</h3>
+        <p>{{ task.description | titlecase }}</p>
+        <div class="task-details">
+          <span class="status-badge" [ngClass]="task.status">{{ task.status | titlecase }}</span>
+          <span class="priority-badge" [ngClass]="task.priority">{{ task.priority | titlecase }}</span>
+        </div>
+        <div class="task-dates">
+          <span>Start: {{ task.startDate | date:'mediumDate' }}</span>
+          <span>Deadline: {{ task.deadline | date:'mediumDate' }}</span>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>

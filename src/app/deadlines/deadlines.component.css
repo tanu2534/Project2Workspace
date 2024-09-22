@@ -41,6 +41,8 @@ ul li:nth-child(-n+1) {
     width: 10rem;
     margin-left: 0;
     margin-right: 2%;
+    border-radius: 5px;
+    cursor: pointer;
 }
 app-calendar{
     margin-left: 5%;
