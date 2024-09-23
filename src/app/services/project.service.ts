@@ -22,4 +22,13 @@ export class ProjectService {
   getProjectById(id:any){
     return this.http.get(`${this.apiUrl}/${this.service}/${id}`);
   }
+
+  removeProject(data: any){
+    return this.http.post(`${this.apiUrl}/${this.service}/delete`, data);
+
+  }
+
+  changeStatus(data: any){
+    return this.http.post(`${this.apiUrl}/${this.service}/status`, data);
+  }
 }

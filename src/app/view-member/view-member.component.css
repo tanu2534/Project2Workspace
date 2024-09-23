@@ -152,4 +152,7 @@
   .btn-danger:hover, .btn-warning:hover {
     opacity: 0.9;
   }
+  .btn{
+    font-family: Poppins;
+  }
   

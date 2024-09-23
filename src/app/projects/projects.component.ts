@@ -88,7 +88,7 @@ export class ProjectsComponent {
     );
   }
 
-  removeProject(sjdn: any) {
+  removeProject(id: any) {
 
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -105,35 +105,94 @@ export class ProjectsComponent {
     });
 
     swalWithBootstrapButtons.fire({
-      title: "Remove Member From Team?",
+      title: "Dismiss Project?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
       reverseButtons: true
       
     }).then((result) => {
       if (result.isConfirmed) {
-        // Call service to delete member
-        // this.userService.removeMember().subscribe(response => {
-        //   swalWithBootstrapButtons.fire({
-        //     title: "Deleted!",
-        //     text: "The member has been removed.",
-        //     icon: "success"
-        //   });
-        //   this.router.navigate(['/team']); // Navigate back to the team page after deletion
-        // }, error => {
-        //   swalWithBootstrapButtons.fire({
-        //     title: "Error",
-        //     text: "Failed to delete the member.",
-        //     icon: "error"
-        //   });
-        // });
+       // Call service to delete member
+        this.projectService.removeProject({companyId : this.company , projectId: id}).subscribe((response: any) => {
+          swalWithBootstrapButtons.fire({
+            title: "Dismissed!",
+            text: "The Project has been Dismissed.",
+            icon: "success"
+          });
+          this.router.navigate(['/source/projects']); // Navigate back to the team page after deletion
+        }, error => {
+          swalWithBootstrapButtons.fire({
+            title: "Error",
+            text: "Failed to Dismiss the Project.",
+            icon: "error"
+          });
+        });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         swalWithBootstrapButtons.fire({
           title: "Cancelled",
-          text: "The member is safe :)",
+          text: "The Project is safe :)",
+          icon: "error"
+        });
+      }
+    });
+
+  }
+
+  changeStatus(id :any, status : any){
+    let a: any ;
+    if(status === "completed"){
+      a = "Closed"
+    }else if(status === "in-progress"){
+      a = "Start"
+    }
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      background: "#292929",
+      color: "#ffffff",
+      buttonsStyling: true,
+      denyButtonColor: "#d33",
+      confirmButtonColor: "#05faa0",
+      // iconColor: "#05faa0",
+      cancelButtonColor: "#d33"
+    });
+
+    swalWithBootstrapButtons.fire({
+      title: `${a} Project?`,
+      // text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      reverseButtons: true
+      
+    }).then((result) => {
+      if (result.isConfirmed) {
+       // Call service to delete member
+        this.projectService.changeStatus({companyId : this.company , projectId: id, status: status}).subscribe((response: any) => {
+          swalWithBootstrapButtons.fire({
+            title: `${a}!`,
+            text:`The Project has been ${a}.`,
+            icon: "success"
+          });
+          this.router.navigate(['/source/projects']); // Navigate back to the team page after deletion
+        }, error => {
+          swalWithBootstrapButtons.fire({
+            title: "Error",
+            text: "Failed to Dismiss the Project.",
+            icon: "error"
+          });
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          // text: "The Project is safe :)",
           icon: "error"
         });
       }

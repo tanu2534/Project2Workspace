@@ -19,6 +19,7 @@ export class ViewMemberComponent {
 
   memberId: any = this.router.url.split('/').pop();
   member: any;
+  company: any;
 
   ngOnInit(): void {
     this.getM(this.memberId);
@@ -27,6 +28,7 @@ export class ViewMemberComponent {
     console.log(" this user ",a);
     this.isAdmin = (a?.role !== 'member' && a?.role !== 'team-lead');
     this.isTeamLead = (a?.role === 'team-lead');
+    this.company = this.userService.getCompany();
   }
 
   getM(id: any) {
@@ -64,24 +66,24 @@ export class ViewMemberComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         // Call service to delete member
-        this.userService.removeMember(this.memberId).subscribe(response => {
+        this.userService.removeFromTeam({ companyId: this.company, teamId: this.member?.team, userId: this.memberId}).subscribe(response => {
           swalWithBootstrapButtons.fire({
             title: "Deleted!",
-            text: "The member has been removed.",
+            text: "The member has been removed from the team.",
             icon: "success"
           });
-          this.router.navigate(['/team']); // Navigate back to the team page after deletion
+          this.router.navigate(['/source/board']);  // Navigate back to the team page after deletion
         }, error => {
           swalWithBootstrapButtons.fire({
             title: "Error",
-            text: "Failed to delete the member.",
+            text: "Failed to remove the member from team.",
             icon: "error"
           });
         });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         swalWithBootstrapButtons.fire({
           title: "Cancelled",
-          text: "The member is safe :)",
+          text: "The member is safe in team :)",
           icon: "error"
         });
       }
@@ -117,13 +119,13 @@ export class ViewMemberComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         // Call service to delete member
-        this.userService.removeMember(this.memberId).subscribe(response => {
+      this.userService.removeMember({companyId : this.company , userId: this.memberId}).subscribe((reasponse: any) => {
           swalWithBootstrapButtons.fire({
             title: "Deleted!",
             text: "The member has been removed.",
             icon: "success"
           });
-          this.router.navigate(['/team']); // Navigate back to the team page after deletion
+          this.router.navigate(['/source/board']); // Navigate back to the team page after deletion
         }, error => {
           swalWithBootstrapButtons.fire({
             title: "Error",

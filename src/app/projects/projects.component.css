@@ -166,6 +166,16 @@ span{
   margin: 0 auto;
 }
 
+#close:hover{
+  background-color: chocolate;
+}
+#start:hover{
+  background-color: chocolate;
+}
+#restart:hover{
+  background-color: chocolate;
+}
+
 canvas {
   width: 100% !important;
   height: 300px !important;

@@ -75,12 +75,13 @@ export class UserService {
   }
 
   // In user.service.ts
-removeMember(memberId: string) {
-  return this.http.delete(`/api/members/${memberId}`);
+removeMember(data: any) {
+  return this.http.patch(`${this.apiUrl}/${this.service}/remove`,data);
 }
 
-removeFromTeam(memberId: string) {
-  return this.http.patch(`/api/members/${memberId}/remove-from-team`, {});
+
+removeFromTeam(data: any) {
+  return this.http.patch(`${this.apiUrl}/${this.service}/remove-from-team`, data);
 }
 
 }
