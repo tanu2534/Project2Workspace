@@ -23,4 +23,8 @@ export class TeamService {
   getTeamById(id:any){
     return this.http.get(`${this.apiUrl}/${this.service}/${id}`);
   }
+
+  removeTeam(data:any){
+    return this.http.post(`${this.apiUrl}/${this.service}/delete`, data);
+  }
 }

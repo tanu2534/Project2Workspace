@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TeamService } from '../services/team.service';
 import { UserService } from '../services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-team',
@@ -40,4 +41,58 @@ export class TeamComponent  {
     console.log("clicked team ", team)
     this.router.navigate([`/source/view-team/${team._id}`]);
   }
+
+
+  removeTeam(team:any){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      background: "#292929",
+      color: "#ffffff",
+      buttonsStyling: true,
+      denyButtonColor: "#d33",
+      confirmButtonColor: "#05faa0",
+      // iconColor: "#05faa0",
+      cancelButtonColor: "#d33"
+    });
+
+    swalWithBootstrapButtons.fire({
+      title: "Dismiss Team?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      reverseButtons: true
+      
+    }).then((result) => {
+      if (result.isConfirmed) {
+       // Call service to delete member
+        this.teamService.removeTeam({companyId : this.company, teamId : team?._id}).subscribe((response: any) => {
+          swalWithBootstrapButtons.fire({
+            title: "Dismissed!",
+            text: "The Team has been Dismissed.",
+            icon: "success"
+          });
+          this.router.navigate(['/source/team']); // Navigate back to the team page after deletion
+        }, error => {
+          swalWithBootstrapButtons.fire({
+            title: "Error",
+            text: "Failed to Dismiss the Team.",
+            icon: "error"
+          });
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "The Team is safe :)",
+          icon: "error"
+        });
+      }
+    });
+  }
+
+  
 }

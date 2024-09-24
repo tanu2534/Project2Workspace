@@ -5,7 +5,7 @@
             <!-- <div class="search shadow">
                 <app-search></app-search>
             </div> -->
-            <button *ngIf="isAdmin" class="shadow" style="border-radius: 4px; cursor: pointer;" (click)="openCreateTeam()">Add new Team</button>      
+            <button *ngIf="isAdmin" class="shadow" style="border-radius: 4px; cursor: pointer; font-size: 14px;" (click)="openCreateTeam()">Add new Team</button>      
         </div>
     </div>
     <div class="h-line"></div>
@@ -20,7 +20,7 @@
                 <h5><span style="font-size: 13px!important; opacity: 0.5; font-weight: 400!important; margin-right: 3px;">Members:</span> {{team.members.length}}</h5>
                 <div class="acts">
                     <button id="view-team" style="border-radius: 4px; cursor: pointer;"  (click)="gotoViewTeam(team)">View Team</button>
-                    <button *ngIf="isAdmin" style="border-radius: 4px; cursor: pointer;" id="dismiss-team">Dismiss Team</button>
+                    <button *ngIf="isAdmin" style="border-radius: 4px; cursor: pointer;" (click)="removeTeam(team)" id="dismiss-team">Dismiss Team</button>
                 </div>
             </div>
 
