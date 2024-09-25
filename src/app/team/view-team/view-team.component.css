@@ -77,6 +77,7 @@
     padding: 1.5rem;
     display: flex;
     align-items: center;
+    position: relative;
     /* width: 400px; */
  /* margin-left: 500px; */
   }
@@ -108,3 +109,79 @@
     font-size: 0.8rem;
     color: #888;
   }
+
+  /* .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.member-card {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+} */
+
+.remove-btn {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4d4d;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #e60000;
+}
+
+.remove-btn .tooltip-text {
+  visibility: hidden; /* Tooltip is hidden by default */
+  font-family: poppins;
+  width: 100px; /* Width of the tooltip */
+  background-color: black; /* Tooltip background */
+  color: #fff; /* Tooltip text color */
+  text-align: center;
+  border-radius: 6px; /* Rounded corners for the tooltip */
+  padding: 5px;
+  position: absolute; /* Position the tooltip relative to the button */
+  top: -40px; /* Position above the button */
+  left: 50%; /* Center the tooltip horizontally */
+  transform: translateX(-50%); /* Adjust for perfect centering */
+  z-index: 1; /* Ensures the tooltip is on top */
+  opacity: 0; /* Tooltip starts as invisible */
+  font-size: 12px;
+  transition: opacity 0.3s ease; /* Smooth transition effect */
+}
+
+.remove-btn:hover .tooltip-text {
+  visibility: visible; /* Show the tooltip when hovered */
+  opacity: 1; /* Make the tooltip fully visible */
+}
+ 
+.team-members > h2{
+  display: flex;
+  align-items: center;
+
+}
+
+.add-member-icon{
+  margin-left: 10px;
+  cursor: pointer;
+}

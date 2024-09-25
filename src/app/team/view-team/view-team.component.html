@@ -1,51 +1,60 @@
-<div class="main-cont">
-    <div class="team-view-container">
-        <header class="team-header">
-          <h1>{{ userService.capatializeFirstLetterAfterSpace( team?.name) || team?.name }}</h1>
-          <p class="department">{{ team?.department | titlecase }}</p>
-        </header>
-      
-        <section class="team-details">
-          <div class="detail-item">
-            <span class="label">Description:</span>
-            <span class="value">{{ team?.description | titlecase }}</span>
+<div class="main-cont"> 
+  <div class="team-view-container">
+      <header class="team-header">
+        <h1>{{ userService.capatializeFirstLetterAfterSpace( team?.name) || team?.name }}</h1>
+        <p class="department">{{ team?.department | titlecase }}</p>
+      </header>
+    
+      <section class="team-details">
+        <div class="detail-item">
+          <span class="label">Description:</span>
+          <span class="value">{{ team?.description | titlecase }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Creation Date:</span>
+          <span class="value">{{ team?.creationDate | date:'mediumDate' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Status:</span>
+          <span class="value" [ngClass]="{'active': team?.status === 'true', 'inactive': team?.status !== 'true'}">
+            {{ team?.status === 'true' ? 'Active' : 'Inactive' }}
+          </span>
+        </div>
+      </section>
+    
+      <section class="team-lead">
+        <h2>Team Lead</h2>
+        <div class="member-card lead-card">
+          <img [src]="'https://api.dicebear.com/6.x/initials/svg?seed=' + teamLead?.name" alt="Team Lead Avatar" class="avatar">
+          <div class="member-info">
+            <h3>{{ userService.capatializeFirstLetterAfterSpace(teamLead?.name) || teamLead?.name }}</h3>
+            <p>{{  teamLead?.email }}</p>
           </div>
-          <div class="detail-item">
-            <span class="label">Creation Date:</span>
-            <span class="value">{{ team?.creationDate | date:'mediumDate' }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="label">Status:</span>
-            <span class="value" [ngClass]="{'active': team?.status === 'true', 'inactive': team?.status !== 'true'}">
-              {{ team?.status === 'true' ? 'Active' : 'Inactive' }}
-            </span>
-          </div>
-        </section>
-      
-        <section class="team-lead">
-          <h2>Team Lead</h2>
-          <div class="member-card lead-card">
-            <img [src]="'https://api.dicebear.com/6.x/initials/svg?seed=' + teamLead?.name" alt="Team Lead Avatar" class="avatar">
+        </div>
+      </section>
+    
+      <section class="team-members">
+        <h2>Team Members
+
+          <img  *ngIf="isAdmin || (isTeamLead && teamLeadId === team?.teamLeadId )" src="../../../assets/icons8-add-32.png" alt="Add Member Icon" class="add-member-icon">
+        </h2>
+        <div class="members-grid">
+          <div *ngFor="let member of members" class="member-card">
+            <img [src]="'https://api.dicebear.com/6.x/initials/svg?seed=' + member.name" alt="Member Avatar" class="avatar">
             <div class="member-info">
-              <h3>{{ userService.capatializeFirstLetterAfterSpace(teamLead?.name) || teamLead?.name }}</h3>
-              <p>{{  teamLead?.email }}</p>
+              <h3>{{ userService.capatializeFirstLetterAfterSpace(member.name) || member.name }}</h3>
+              <p>{{  member.email }}</p>
+              <p class="task-count">Tasks: {{ member.tasks?.length || 0 }}</p>
             </div>
+
+            <!-- Cross Icon for Removing Member -->
+            <button *ngIf="isAdmin || (isTeamLead && teamLeadId === team?.teamLeadId )" (click)="removeMember(member)" class="remove-btn">
+              &#10006;
+              <span class="tooltip-text">Remove Member</span>
+            </button>
+            
           </div>
-        </section>
-      
-        <section class="team-members">
-          <h2>Team Members</h2>
-          <div class="members-grid">
-            <div *ngFor="let member of members" class="member-card">
-              <img [src]="'https://api.dicebear.com/6.x/initials/svg?seed=' + member.name" alt="Member Avatar" class="avatar">
-              <div class="member-info">
-                <h3>{{ userService.capatializeFirstLetterAfterSpace(member.name) || member.name }}</h3>
-                <p>{{  member.email }}</p>
-                <p class="task-count">Tasks: {{ member.tasks?.length || 0 }}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-  
+        </div>
+      </section>
+    </div>
 </div>
