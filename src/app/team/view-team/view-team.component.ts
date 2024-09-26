@@ -35,6 +35,65 @@ export class ViewTeamComponent {
     
   }
 
+  async addMember() {
+    try {
+      const response : any = await this.userService.findUsers({
+        company: this.userService.getCompany(),
+        role: 'member',
+        team: { $exists: false }
+      }).toPromise();
+  
+      console.log("Members list:", response);
+  
+      const members = response?.employees?.map((member: any) => ({
+        id: member._id,
+        name: member.name
+      }));
+  
+      const result = await Swal.fire({
+        title: 'Select Member',
+        html: this.createMemberSelectHtml(members),
+        showCancelButton: true,
+        confirmButtonText: 'Add Member',
+        cancelButtonText: 'Cancel',
+        preConfirm: () => this.getSelectedMembers()
+      });
+  
+      if (result.isConfirmed) {
+        const selectedMemberIds = result.value;
+        console.log('Selected Member IDs:', selectedMemberIds);
+        // TODO: Handle the selected members (e.g., call an API to add them)
+      }
+    } catch (error) {
+      console.error('Error fetching members:', error);
+      Swal.fire('Error', 'Failed to fetch members. Please try again.', 'error');
+    }
+  }
+  
+  private createMemberSelectHtml(members: { id: string, name: string }[]): string {
+    const options = members.map(member => 
+      `<option value="${member.id}">${member.name}</option>`
+    ).join('');
+    
+    return `
+      <select id="member-select" class="swal2-select" multiple>
+        ${options}
+      </select>
+    `;
+  }
+  
+  private getSelectedMembers(): string[] | false {
+    const select = document.getElementById('member-select') as HTMLSelectElement;
+    const selectedMembers = Array.from(select.selectedOptions).map(option => option.value);
+  
+    if (selectedMembers.length === 0) {
+      Swal.showValidationMessage('Please select at least one member');
+      return false;
+    }
+  
+    return selectedMembers;
+  }
+
   getT(id:any){
     this.teamService.getTeamById(id).subscribe(
       (response: any) => {

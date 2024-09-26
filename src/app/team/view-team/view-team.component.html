@@ -36,7 +36,7 @@
       <section class="team-members">
         <h2>Team Members
 
-          <img  *ngIf="isAdmin || (isTeamLead && teamLeadId === team?.teamLeadId )" src="../../../assets/icons8-add-32.png" alt="Add Member Icon" class="add-member-icon">
+          <img  *ngIf="isAdmin || (isTeamLead && teamLeadId === team?.teamLeadId )" (click)="addMember()" src="../../../assets/icons8-add-32.png" alt="Add Member Icon" class="add-member-icon">
         </h2>
         <div class="members-grid">
           <div *ngFor="let member of members" class="member-card">

@@ -32,6 +32,10 @@ export class UserService {
 
   }
 
+  findUsers(quary:any){
+    return this.http.post(`${this.apiUrl}/${this.service}/find-users`, quary);
+  }
+
  
 
   getCompany(){
