@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { CompanyService } from '../services/company.service';
 import { MatStepper } from '@angular/material/stepper';
+import { Router } from '@angular/router';
 
 interface User {
   name: string;
@@ -36,7 +37,8 @@ export class SignupComponent {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private router : Router
   ) {
     this.signupForm = this.formBuilder.group({
       personalInfo: this.formBuilder.group({
@@ -97,6 +99,10 @@ export class SignupComponent {
           localStorage.setItem('userData', JSON.stringify(response));
           localStorage.setItem('token', response.token);
           this.stepper.selectedIndex = 2;
+
+          this.router.navigate(['/source/board']);
+
+          
         },
         (error) => {
           console.error('Registration failed:', error);
@@ -104,6 +110,8 @@ export class SignupComponent {
           this.stepper.selectedIndex = 0;
         }
       );
+
+
     }else{
       window.alert('Please enter a valid information');
       this.stepper.selectedIndex = 0;

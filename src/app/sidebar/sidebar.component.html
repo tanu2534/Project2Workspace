@@ -57,30 +57,40 @@
     
     <div class="fields files" (click)="logOut()"  [class.active]="activeFeild === 'login'" >
          <span class="material-symbols-outlined">
-         draft
+            <span class="material-symbols-outlined">
+                logout
+                </span>
          </span>
         <p>Log Out</p>
     </div>
-     <div class="h-line out"></div>
-     <div class="fields careers foot-ele">
-        <p>Careers</p>
+    <div class="fields files" (click)="signIn()"  [class.active]="activeFeild === 'signIn'" >
+         <span class="material-symbols-outlined">
+            <span class="material-symbols-outlined">
+                login
+                </span>
+         </span>
+        <p>Sign In</p>
     </div>
+     <div class="h-line out"></div>
+     <!-- <div class="fields careers foot-ele">
+        <p>Careers</p>
+    </div> -->
     
-     <div class="fields about foot-ele">
+     <!-- <div class="fields about foot-ele">
         <p>About Us</p>
     </div>
     
      <div class="fields contact foot-ele">
         <p>Contact Us</p>
-    </div>
+    </div> -->
     
-     <div class="fields terms foot-ele">
+     <!-- <div class="fields terms foot-ele">
         <p>Terms and Conditions</p>
-    </div>
+    </div> -->
     
-     <div class="fields terms foot-ele">
+     <!-- <div class="fields terms foot-ele">
         <p>&#169;Copywrite 2023 Tanisha Soni</p>
-    </div>
+    </div> -->
     
 
   </div>

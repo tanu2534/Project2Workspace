@@ -5,6 +5,8 @@
         <h1>{{ task.name }}</h1>
         <span class="task-project">{{ task.projectName }}</span>
       </header>
+
+      <button *ngIf="isAdmin || isTeamLead"  class="btn btn-danger" (click)="removeTask()">Remove Task</button>
   
       <section class="task-info">
         <div class="info-item">

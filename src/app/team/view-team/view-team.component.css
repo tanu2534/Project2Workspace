@@ -185,3 +185,87 @@
   margin-left: 10px;
   cursor: pointer;
 }
+
+
+
+.custom-multiselect {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #424242;
+  font-size: 16px;
+  height: auto;
+  overflow-y: auto;
+}
+
+.custom-multiselect option {
+  padding: 8px;
+}
+
+.custom-multiselect option:checked {
+  background-color: #007bff;
+  color: white;
+}
+
+
+.custom-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #226ab3;
+  font-size: 16px;
+  color: white;
+  appearance: none;
+}
+
+/* Remove default blue highlight on hover */
+.custom-select option {
+  background-color: #226ab3;
+  color: white;
+}
+
+/* Custom hover color */
+.custom-select option:hover {
+  background-color: #1a5a90;
+}
+
+/* If you want to style the dropdown arrow */
+.custom-select-wrapper {
+  position: relative;
+}
+
+.custom-select:focus {
+  outline: none;
+  border: 1px solid #fff;
+}
+
+
+/* Import Poppins font if not already done globally */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.custom-confirm-btn {
+  font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+  font-size: 16px;
+  background-color: #4caf50; /* You can customize the background color */
+  color: white;
+}
+
+.custom-cancel-btn {
+  font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+  font-size: 16px;
+  background-color: #f44336; /* You can customize the background color */
+  color: white;
+}
+
+/* You can also style the popup itself */
+.custom-swal-popup {
+  font-family: 'Poppins', sans-serif; /* Apply Poppins to the popup as well if needed */
+}
+
+
+.custom-confirm-btn, .custom-cancel-btn {
+  font-family: 'Amilly', sans-serif; /* Apply Amilly font */
+}
+

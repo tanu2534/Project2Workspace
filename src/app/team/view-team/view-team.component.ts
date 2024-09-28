@@ -37,11 +37,24 @@ export class ViewTeamComponent {
 
   async addMember() {
     try {
-      const response : any = await this.userService.findUsers({
+      // Show loading popup
+      Swal.fire({
+        title: 'Loading...',
+        text: 'Fetching members...',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+  
+      const response: any = await this.userService.findUsers({
         company: this.userService.getCompany(),
         role: 'member',
         team: { $exists: false }
       }).toPromise();
+  
+      // Close the loading popup
+      Swal.close();
   
       console.log("Members list:", response);
   
@@ -53,16 +66,44 @@ export class ViewTeamComponent {
       const result = await Swal.fire({
         title: 'Select Member',
         html: this.createMemberSelectHtml(members),
+        background: '#292929',
+        color: '#fff',
         showCancelButton: true,
         confirmButtonText: 'Add Member',
         cancelButtonText: 'Cancel',
-        preConfirm: () => this.getSelectedMembers()
+        buttonsStyling: true,
+        customClass: {
+          popup: 'custom-swal-popup',       // Custom class for popup
+          confirmButton: 'custom-confirm-btn', // Class for Add Member button
+          cancelButton: 'custom-cancel-btn'    // Class for Cancel button
+        },
+        didOpen: () => {
+          const selectElement = document.getElementById('member-select') as HTMLSelectElement;
+          this.initializeSingleSelect(selectElement);
+        },
+        preConfirm: () => this.getSelectedMember()
       });
+      
   
       if (result.isConfirmed) {
-        const selectedMemberIds = result.value;
-        console.log('Selected Member IDs:', selectedMemberIds);
-        // TODO: Handle the selected members (e.g., call an API to add them)
+        const selectedMemberId = result.value;  // Single ID
+        console.log('Selected Member ID:', selectedMemberId);
+        
+        this.teamService.addmember({
+          companyId : this.userService.getCompany(),
+           teamId : this.teamId,
+            userId : selectedMemberId 
+        }).subscribe(
+          (response: any) => {
+            console.log( "this is resp ",response);
+            this.getT(this.teamId);
+          },
+          (error) => {
+            console.error('Error adding member:', error);
+            Swal.fire('Error', 'Failed to add member. Please try again.', 'error');
+          }
+        )
+        // TODO: Handle the selected member (e.g., call an API to add them)
       }
     } catch (error) {
       console.error('Error fetching members:', error);
@@ -74,38 +115,88 @@ export class ViewTeamComponent {
     const options = members.map(member => 
       `<option value="${member.id}">${member.name}</option>`
     ).join('');
-    
+  
     return `
-      <select id="member-select" class="swal2-select" multiple>
+      <select id="member-select" class="custom-select" style="width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #424242;
+      color: white;
+      font-size: 16px;
+      font-family: poppins;
+      height: auto;
+      overflow-y: auto;">
+        <option style="
+        color: white;"
+        
+        " value="" disabled selected>Select a member</option>
         ${options}
       </select>
     `;
   }
   
-  private getSelectedMembers(): string[] | false {
-    const select = document.getElementById('member-select') as HTMLSelectElement;
-    const selectedMembers = Array.from(select.selectedOptions).map(option => option.value);
+  // Single select behavior
+  private initializeSingleSelect(selectElement: HTMLSelectElement) {
+    selectElement.style.width = '100%';
+    selectElement.style.height = 'auto';
   
-    if (selectedMembers.length === 0) {
-      Swal.showValidationMessage('Please select at least one member');
+    // Handle selection validation
+    selectElement.addEventListener('change', () => {
+      if (!selectElement.value) {
+        Swal.showValidationMessage('Please select a member');
+      }
+    });
+  }
+  
+  // Get selected single member
+  private getSelectedMember(): string | false {
+    const select = document.getElementById('member-select') as HTMLSelectElement;
+    const selectedMember = select.value;
+  
+    if (!selectedMember) {
+      Swal.showValidationMessage('Please select a member');
       return false;
     }
   
-    return selectedMembers;
+    return selectedMember;  // Return single selected member's ID
   }
+  
+  
+  // private getSelectedMembers(): string[] | false {
+  //   const select = document.getElementById('member-select') as HTMLSelectElement;
+  //   const selectedMembers = Array.from(select.selectedOptions).map(option => option.value);
+  
+  //   if (selectedMembers.length === 0) {
+  //     Swal.showValidationMessage('Please select at least one member');
+  //     return false;
+  //   }
+  
+  //   return selectedMembers;
+  // }
+  
 
-  getT(id:any){
+  getT(id: any) {
     this.teamService.getTeamById(id).subscribe(
       (response: any) => {
-        console.log(response)
-        this.team = response?.team
-        this.teamLead = response?.teamLead
-        this.members = response?.members
-        this.teamData.members = response?.members
-        this.teamData.teamLead = response?.teamLead
-        this.teamData.team = response?.team
+        if (!response || !response.team) {
+          console.error('Error fetching team:', response);
+          return;
+        }
+
+        this.team = response.team;
+        this.teamLead = response.teamLead;
+        this.members = response.members;
+        this.teamData = {
+          members: response.members || [],
+          teamLead: response.teamLead || null,
+          team: response.team || null
+        };
+      },
+      (error) => {
+        console.error('Error fetching team:', error);
       }
-    )
+    );
   }
 
   removeMember(memeber: any){

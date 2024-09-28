@@ -22,8 +22,10 @@ import { ViewMemberComponent } from './view-member/view-member.component';
 
 const routes: Routes = [
  {
-  path:'',
-  component:WelcomeComponent
+
+  path: '',
+  redirectTo: 'source/board', // Redirect root path to /source/board
+  pathMatch: 'full' // This ensures the full path is matched
  },
  {
   path: 'register',

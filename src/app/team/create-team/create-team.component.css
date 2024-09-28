@@ -34,6 +34,7 @@
       padding: 0.75rem 1rem;
       width: 100%;
       transition: background-color 0.3s ease;
+      font-family: poppins;
   
       &:focus {
         background-color: #3a3a3a;

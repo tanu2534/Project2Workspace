@@ -74,18 +74,21 @@ export class UserService {
     return this.http.get(`${this.apiUrl}/${this.service}/${id}`)
   }
 
-  capatializeFirstLetterAfterSpace(str: string) {
-    return str.replace(/\b\w/g, (char) => char.toUpperCase());
+  capatializeFirstLetterAfterSpace(str: any) {
+    if (!str) {
+      return str
+    }
+    return str.replace(/\b\w/g, (char : any) => char.toUpperCase());
   }
 
   // In user.service.ts
 removeMember(data: any) {
-  return this.http.patch(`${this.apiUrl}/${this.service}/remove`,data);
+  return this.http.post(`${this.apiUrl}/${this.service}/remove`,data);
 }
 
 
 removeFromTeam(data: any) {
-  return this.http.patch(`${this.apiUrl}/${this.service}/remove-from-team`, data);
+  return this.http.post(`${this.apiUrl}/${this.service}/remove-from-team`, data);
 }
 
 }

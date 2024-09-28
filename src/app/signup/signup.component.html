@@ -6,7 +6,7 @@
     <form [formGroup]="signupForm" >
       <mat-horizontal-stepper class="stepper" #stepper linear disableHeaderNavigation>
         <mat-step [formGroup]="personalInfoForm" [stepControl]="personalInfoForm">
-          <ng-template matStepLabel>Personal Information</ng-template>
+          <ng-template matStepLabel style="font-family: poppins !important;">Personal Information</ng-template>
           <div>
             <mat-form-field>
               <mat-label for="name">Name</mat-label>
@@ -60,7 +60,7 @@
           </div> -->
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="onSubmit()" >Sign Up</button>
+            <button mat-button style="margin-left: 10px !important;" (click)="onSubmit()" >Sign Up</button>
           </div>
         </mat-step>
   

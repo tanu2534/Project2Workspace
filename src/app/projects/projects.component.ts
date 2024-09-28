@@ -13,6 +13,7 @@ interface Project {
   description: string;
   teamLeadName: string;
   startDate: string;
+  teamLeadId: string;
   status: string;
   priority: string;
   tag: string;

@@ -19,4 +19,9 @@
   .profile span, .profile p, .section span, .section p{
     margin-left: 15px;
     opacity: 0.6;
+    font-size: 16px;
+  }
+
+  .ic{
+    font-size: 16px !important;
   }

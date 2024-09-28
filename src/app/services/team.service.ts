@@ -24,6 +24,10 @@ export class TeamService {
     return this.http.get(`${this.apiUrl}/${this.service}/${id}`);
   }
 
+  addmember(data:any){
+    return this.http.post(`${this.apiUrl}/${this.service}/add-member`, data);
+  }
+
   removeTeam(data:any){
     return this.http.post(`${this.apiUrl}/${this.service}/delete`, data);
   }

@@ -40,9 +40,9 @@
                 <div class="acts">
                   <button id="view-proj" (click)="gotoViewProj(panel)" style="cursor: pointer;" >View Project</button>
                   <button *ngIf="isAdmin" id="dismiss-proj" style="cursor: pointer;" (click)="removeProject(panel?._id)" >Dismiss Project</button>
-                  <button *ngIf="isAdmin && panel?.status === 'in-progress'" id="close" style="cursor: pointer; border-color: chocolate ; color: chocolate; background-color: transparent; " (click)="changeStatus(panel?._id, 'completed')" >Close Project</button>
-                  <button *ngIf="isAdmin && panel?.status === 'not-started'" id="start" style="cursor: pointer; border-color: chocolate ; color: chocolate; background-color: transparent; " (click)="changeStatus(panel?._id, 'in-progress')" >Start Project</button>
-                  <button *ngIf="isAdmin && panel?.status === 'completed'" id="restart" style="cursor: pointer; border-color: chocolate ; color: chocolate; background-color: transparent; " (click)="changeStatus(panel?._id, 'in-progress')" >Restart Project</button>
+                  <button *ngIf="isAdmin && panel?.status === 'in-progress' && panel?.teamLeadId !== null"  id="close" style="cursor: pointer; border-color: chocolate ; color: chocolate; background-color: transparent; " (click)="changeStatus(panel?._id, 'completed')" >Close Project</button>
+                  <button *ngIf="isAdmin && panel?.status === 'not-started' && panel?.teamLeadId !== null" id="start" style="cursor: pointer; border-color: chocolate ; color: chocolate; background-color: transparent; " (click)="changeStatus(panel?._id, 'in-progress')" >Start Project</button>
+                  <button *ngIf="isAdmin && panel?.status === 'completed' && panel?.teamLeadId !== null" id="restart" style="cursor: pointer; border-color: chocolate ; color: chocolate; background-color: transparent; " (click)="changeStatus(panel?._id, 'in-progress')" >Restart Project</button>
                 </div>
                 <button mat-button color="primary" (click)="nextStep()">Next</button>
               </mat-action-row>

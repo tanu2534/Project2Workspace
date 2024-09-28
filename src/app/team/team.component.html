@@ -15,7 +15,7 @@
             <div class="sqare-team-info shadow" *ngFor="let team of teams">
                 <h3>{{team.name.toUpperCase()}}</h3>
                 <div class="h-line"></div>
-                <h5><span style="font-size: 13px!important; opacity: 0.5; font-weight: 400!important; margin-right: 3px;">Department:</span> {{ userService.capatializeFirstLetterAfterSpace(team?.department)}}</h5>
+                <h5><span style="font-size: 13px!important; opacity: 0.5; font-weight: 400!important; margin-right: 3px;">Department:</span> {{ userService.capatializeFirstLetterAfterSpace(team?.department) || team.department}}</h5>
                 <h5><span style="font-size: 13px!important; opacity: 0.5; font-weight: 400!important; margin-right: 3px;">Team Lead:</span> {{userService.capatializeFirstLetterAfterSpace(team?.teamLeadName) || team.teamLeadName}}</h5>
                 <h5><span style="font-size: 13px!important; opacity: 0.5; font-weight: 400!important; margin-right: 3px;">Members:</span> {{team.members.length}}</h5>
                 <div class="acts">
